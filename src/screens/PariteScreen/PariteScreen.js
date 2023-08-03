@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-import { styles } from './HomeScreen.style';
+import { styles } from './PariteScreen.style';
 
-export const HomeScreen = () => {
+export const PariteScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>HomeScreen</Text>
+      <Text>PariteScreen</Text>
     </View>
   );
 };

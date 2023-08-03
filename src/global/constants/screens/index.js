@@ -1,1 +1,1 @@
-export { enumScreens } from './screens';
+export * from './screens';
