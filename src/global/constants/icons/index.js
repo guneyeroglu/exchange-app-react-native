@@ -1,0 +1,9 @@
+export { AboutIcon } from './AboutIcon';
+export { BackIcon } from './BackIcon';
+export { CalculationIcon } from './CalculationIcon';
+export { ContactIcon } from './ContactIcon';
+export { DolarIcon } from './DolarIcon';
+export { EuroIcon } from './EuroIcon';
+export { HomeIcon } from './HomeIcon';
+export { SettingIcon } from './SettingIcon';
+export { SterlinIcon } from './SterlinIcon';
