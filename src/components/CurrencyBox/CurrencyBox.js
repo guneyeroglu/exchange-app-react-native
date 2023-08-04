@@ -1,5 +1,8 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+
+import { enumScreens } from '../../global/constants/screens';
 
 import styles from './CurrencyBox.style';
 
@@ -10,8 +13,14 @@ export const CurrencyBox = ({
   buying = 27.2321,
   sales = 27.8514,
 }) => {
+  const { navigate } = useNavigation();
+
+  const onPressToNavigate = (navigation) => {
+    navigate(navigation, { symbol });
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => onPressToNavigate(enumScreens.DETAIL_SCREEN)}>
       <Image source={{ uri: iconUri }} style={styles.image} />
       <View style={styles.naming}>
         <Text style={styles.symbol}>{symbol}</Text>
