@@ -1,26 +1,26 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { AboutScreen, CalculationScreen, ContactScreen, DetailScreen, HomeScreen, PariteScreen, SettingsScreen } from './src/screens';
 import { enumScreens } from './src/global/constants/screens';
 
 const App = () => {
-  const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
 
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name={enumScreens.HOME_SCREEN} component={HomeScreen} />
-          <Stack.Screen name={enumScreens.DETAIL_SCREEN} component={DetailScreen} />
-          <Stack.Screen name={enumScreens.PARITE_SCREEN} component={PariteScreen} />
-          <Stack.Screen name={enumScreens.CALCULATION_SCREEN} component={CalculationScreen} />
-          <Stack.Screen name={enumScreens.ABOUT_SCREEN} component={AboutScreen} />
-          <Stack.Screen name={enumScreens.CONTACT_SCREEN} component={ContactScreen} />
-          <Stack.Screen name={enumScreens.SETTINGS_SCREEN} component={SettingsScreen} />
-        </Stack.Navigator>
+        <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName={enumScreens.HOME_SCREEN} tabBar={() => null}>
+          <Tab.Screen name={enumScreens.HOME_SCREEN} component={HomeScreen} />
+          <Tab.Screen name={enumScreens.DETAIL_SCREEN} component={DetailScreen} />
+          <Tab.Screen name={enumScreens.PARITE_SCREEN} component={PariteScreen} />
+          <Tab.Screen name={enumScreens.CALCULATION_SCREEN} component={CalculationScreen} />
+          <Tab.Screen name={enumScreens.ABOUT_SCREEN} component={AboutScreen} />
+          <Tab.Screen name={enumScreens.CONTACT_SCREEN} component={ContactScreen} />
+          <Tab.Screen name={enumScreens.SETTINGS_SCREEN} component={SettingsScreen} />
+        </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
