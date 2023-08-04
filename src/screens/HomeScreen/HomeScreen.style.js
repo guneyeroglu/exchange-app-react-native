@@ -9,6 +9,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 16,
-    margin: 16,
+    marginVertical: 16,
+  },
+  containerParite: {
+    marginBottom: 16,
   },
 });

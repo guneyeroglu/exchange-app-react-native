@@ -1,25 +1,74 @@
 import { FlatList, View } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Layout } from '../../components/Layout';
-import { ExchangeBox } from '../../components/ExchangeBox';
+import { BigCurrencyBox } from '../../components/BigCurrencyBox';
+import { PariteBox } from '../../components/PariteBox';
+import { CurrencyBox } from '../../components/CurrencyBox';
+
 import { DolarIcon, EuroIcon } from '../../global/constants/icons';
+import { getExchangeRate } from '../../global/services/';
+import { moneyFormat } from '../../global/utils';
 
 import styles from './HomeScreen.style';
 
 export const HomeScreen = () => {
-  const exchanges = [
-    { id: '1', icon: <DolarIcon size={72} color='#202124' stroke={'#eeeeee'} />, title: 'USD', subtitle: 'Amerikan Doları', sales: 16.7221, buying: 17.7321 },
-    { id: '2', icon: <EuroIcon size={72} color='#202124' stroke={'#eeeeee'} />, title: 'EUR', subtitle: 'Euro', sales: 16.7221, buying: 17.7321 },
-  ];
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const currencyIcon = {
+    USD: <DolarIcon size={72} color='#202124' stroke={'#eeeeee'} />,
+    EUR: <EuroIcon size={72} color='#202124' stroke={'#eeeeee'} />,
+  };
+
+  const getAllData = async () => {
+    setIsLoading(true);
+    const response = await getExchangeRate();
+
+    if (response.data.length) {
+      setData(
+        response.data.map((item) => ({
+          ...item,
+          buying: moneyFormat(item.buying),
+          sales: moneyFormat(item.sales),
+        })),
+      );
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getAllData();
+  }, []);
+
   return (
     <Layout>
       <View style={styles.container}>
         <View style={styles.containerHeader}>
-          {exchanges.map((item) => (
-            <ExchangeBox key={item.id} icon={item.icon} title={item.title} subtitle={item.subtitle} sales={item.sales} buying={item.buying} />
-          ))}
+          {!!data.length &&
+            !isLoading &&
+            [data[0], data[1]].map((item) => (
+              <BigCurrencyBox
+                key={item.symbol}
+                icon={currencyIcon[item.symbol]}
+                symbol={item.symbol}
+                name={item.name}
+                buying={moneyFormat(item.buying)}
+                sales={moneyFormat(item.sales)}
+              />
+            ))}
         </View>
+        <View style={styles.containerParite}>
+          <PariteBox
+            firstCurrency={{ ...data[0], icon: <DolarIcon size={36} color='#eeeeee80' stroke={'#202124'} /> }}
+            secondCurrency={{ ...data[1], icon: <EuroIcon size={36} color='#eeeeee' stroke={'#202124'} /> }}
+          />
+        </View>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => <CurrencyBox {...{ ...item, iconUri: item.icon }} key={item.symbol} />}
+          keyExtractor={(item) => item.symbol}
+        />
       </View>
     </Layout>
   );
