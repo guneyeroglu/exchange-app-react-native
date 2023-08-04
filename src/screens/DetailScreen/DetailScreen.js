@@ -14,6 +14,8 @@ import styles from './DetailScreen.style';
 
 export const DetailScreen = ({ route }) => {
   const symbol = route.params.symbol;
+  const lastPage = route.params.thisPage;
+
   const navigation = useNavigation();
 
   const [data, setData] = useState({});
@@ -31,8 +33,8 @@ export const DetailScreen = ({ route }) => {
     setIsLoading(false);
   };
 
-  const onPressToHome = () => {
-    navigation.navigate(enumScreens.HOME_SCREEN);
+  const onPressToBack = () => {
+    navigation.navigate(lastPage);
   };
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export const DetailScreen = ({ route }) => {
       {!isLoading && (
         <>
           <View style={styles.header}>
-            <TouchableOpacity onPress={onPressToHome}>
+            <TouchableOpacity onPress={onPressToBack}>
               <BackIcon size={36} />
             </TouchableOpacity>
             <Text style={styles.title}>{data.name}</Text>

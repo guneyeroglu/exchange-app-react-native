@@ -22,6 +22,7 @@ export default StyleSheet.create({
   },
   naming: {
     flex: 1,
+    marginRight: 4,
   },
   symbol: {
     fontSize: 20,
@@ -35,10 +36,13 @@ export default StyleSheet.create({
     fontStyle: 'italic',
   },
   info: {
+    flex: 1,
     flexDirection: 'row',
+    justifyContent: 'flex-end',
     gap: 16,
   },
   infoContainer: {
+    flex: 1,
     alignItems: 'center',
   },
   title: {
