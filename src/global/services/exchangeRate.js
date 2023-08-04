@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL = 'https://exchange.akbolat.net/api/exchanges';
 
-export const getExchange = async () => {
+export const getExchangeRate = async () => {
   const response = await axios.get(URL);
 
   if (response.status === 200) {
@@ -12,7 +12,7 @@ export const getExchange = async () => {
   return [];
 };
 
-export const getExchangeDetail = async (symbol) => {
+export const getExchangeRateDetail = async (symbol) => {
   const response = await axios.get(`${URL}/${symbol}`);
 
   if (response.status === 200) {

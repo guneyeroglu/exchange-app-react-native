@@ -5,9 +5,9 @@ const { width } = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     backgroundColor: '#202124',
-    width: width * 0.5 - 32,
+    width: width * 0.5 - 24, // 24 = 16 + 8
     minHeight: 150,
-    borderRadius: 16,
+    borderRadius: 8,
     position: 'relative',
     marginTop: 35,
     paddingVertical: 8,
