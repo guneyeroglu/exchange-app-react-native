@@ -16,6 +16,9 @@ export default StyleSheet.create({
     width: 48,
     height: 48,
     marginRight: 16,
+    borderWidth: 1,
+    borderColor: '#202124',
+    borderRadius: 44,
   },
   naming: {
     flex: 1,
