@@ -8,7 +8,8 @@ import styles from './SplashScreen.style';
 export const SplashScreen = () => {
   return (
     <View style={styles.container}>
-      <DolarIcon size={600} color='#20212495' stroke={'#202124'} />
+      <View style={styles.shadow}></View>
+      <DolarIcon size={500} color='#202124' stroke={'#eeeeee'} />
     </View>
   );
 };
