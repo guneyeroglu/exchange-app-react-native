@@ -1,9 +1,14 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
+  },
+  containerHeader: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 16,
+    margin: 16,
   },
 });
