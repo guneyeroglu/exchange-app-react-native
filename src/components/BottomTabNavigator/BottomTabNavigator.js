@@ -11,6 +11,14 @@ export const BottomTabNavigator = () => {
   const route = useRoute();
   const { navigate } = useNavigation();
 
+  const buttons = [
+    { id: 2, icon: ContactIcon, route: enumScreens.CONTACT_SCREEN },
+    { id: 1, icon: CalculationIcon, route: enumScreens.CALCULATION_SCREEN },
+    { id: 3, icon: HomeIcon, route: enumScreens.HOME_SCREEN },
+    { id: 5, icon: SettingIcon, route: enumScreens.SETTINGS_SCREEN },
+    { id: 4, icon: AboutIcon, route: enumScreens.ABOUT_SCREEN },
+  ];
+
   const currenctRoute = (routeName) => {
     if (route.name === routeName) return { color: '#202124', size: 48 };
 
@@ -23,21 +31,11 @@ export const BottomTabNavigator = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => onPressToNavigate(enumScreens.CALCULATION_SCREEN)}>
-        <CalculationIcon {...currenctRoute(enumScreens.CALCULATION_SCREEN)} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => onPressToNavigate(enumScreens.CONTACT_SCREEN)}>
-        <ContactIcon {...currenctRoute(enumScreens.CONTACT_SCREEN)} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => onPressToNavigate(enumScreens.HOME_SCREEN)}>
-        <HomeIcon {...currenctRoute(enumScreens.HOME_SCREEN)} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => onPressToNavigate(enumScreens.ABOUT_SCREEN)}>
-        <AboutIcon {...currenctRoute(enumScreens.ABOUT_SCREEN)} />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => onPressToNavigate(enumScreens.SETTINGS_SCREEN)}>
-        <SettingIcon {...currenctRoute(enumScreens.SETTINGS_SCREEN)} />
-      </TouchableOpacity>
+      {buttons.map((button) => (
+        <TouchableOpacity key={button.id} style={styles.button} onPress={() => onPressToNavigate(button.route)}>
+          <button.icon {...currenctRoute(button.route)} />
+        </TouchableOpacity>
+      ))}
     </View>
   );
 };
