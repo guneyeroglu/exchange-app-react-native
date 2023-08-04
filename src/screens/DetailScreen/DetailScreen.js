@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-import { styles } from './DetailScreen.style';
+import styles from './DetailScreen.style';
 
 export const DetailScreen = () => {
   return (

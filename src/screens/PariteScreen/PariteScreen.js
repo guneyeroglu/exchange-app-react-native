@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-import { styles } from './PariteScreen.style';
+import styles from './PariteScreen.style';
 
 export const PariteScreen = () => {
   return (

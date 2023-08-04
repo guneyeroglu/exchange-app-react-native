@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-import { styles } from './AboutScreen.style';
+import styles from './AboutScreen.style';
 
 export const AboutScreen = () => {
   return (
