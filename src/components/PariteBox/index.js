@@ -1,0 +1,1 @@
+export { PariteBox } from './PariteBox';
