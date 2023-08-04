@@ -24,6 +24,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: '#202124',
     borderRadius: 44,
+    resizeMode: 'cover',
   },
   content: {
     padding: 16,
