@@ -1,6 +1,7 @@
 import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
+import { SplashScreen } from '../SplashScreen/SplashScreen';
 import { Layout } from '../../components/Layout';
 import { BigCurrencyBox } from '../../components/BigCurrencyBox';
 import { PariteBox } from '../../components/PariteBox';
@@ -42,34 +43,38 @@ export const HomeScreen = () => {
   }, []);
 
   return (
-    <Layout>
-      <View style={styles.container}>
-        <View style={styles.containerHeader}>
-          {!!data.length &&
-            !isLoading &&
-            [data[0], data[1]].map((item) => (
-              <BigCurrencyBox
-                key={item.symbol}
-                icon={currencyIcon[item.symbol]}
-                symbol={item.symbol}
-                name={item.name}
-                buying={moneyFormat(item.buying)}
-                sales={moneyFormat(item.sales)}
+    <>
+      {!!data.length && !isLoading ? (
+        <Layout>
+          <View style={styles.container}>
+            <View style={styles.containerHeader}>
+              {[data[0], data[1]].map((item) => (
+                <BigCurrencyBox
+                  key={item.symbol}
+                  icon={currencyIcon[item.symbol]}
+                  symbol={item.symbol}
+                  name={item.name}
+                  buying={moneyFormat(item.buying)}
+                  sales={moneyFormat(item.sales)}
+                />
+              ))}
+            </View>
+            <View style={styles.containerParite}>
+              <PariteBox
+                firstCurrency={{ ...data[0], icon: <DolarIcon size={36} color='#eeeeee80' stroke={'#202124'} /> }}
+                secondCurrency={{ ...data[1], icon: <EuroIcon size={36} color='#eeeeee' stroke={'#202124'} /> }}
               />
-            ))}
-        </View>
-        <View style={styles.containerParite}>
-          <PariteBox
-            firstCurrency={{ ...data[0], icon: <DolarIcon size={36} color='#eeeeee80' stroke={'#202124'} /> }}
-            secondCurrency={{ ...data[1], icon: <EuroIcon size={36} color='#eeeeee' stroke={'#202124'} /> }}
-          />
-        </View>
-        <FlatList
-          data={data}
-          renderItem={({ item }) => <CurrencyBox {...{ ...item, iconUri: item.icon }} key={item.symbol} />}
-          keyExtractor={(item) => item.symbol}
-        />
-      </View>
-    </Layout>
+            </View>
+            <FlatList
+              data={data}
+              renderItem={({ item }) => <CurrencyBox {...{ ...item, iconUri: item.icon }} key={item.symbol} />}
+              keyExtractor={(item) => item.symbol}
+            />
+          </View>
+        </Layout>
+      ) : (
+        <SplashScreen />
+      )}
+    </>
   );
 };
