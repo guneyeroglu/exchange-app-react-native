@@ -2,6 +2,7 @@ import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
 import { Layout } from '../../components/Layout';
+import { CustomInput } from '../../components/CustomInput';
 
 import { EyeOffIcon, EyeOnIcon, KeyIcon, MailIcon } from '../../global/constants/icons';
 
@@ -25,40 +26,34 @@ export const LoginScreen = () => {
       <Image source={require('../../../assets/login.png')} style={styles.mainLogo} />
       <View style={styles.content}>
         <Text style={styles.title}>Giriş</Text>
-        <View style={styles.inputContainer}>
-          <View style={styles.leftIcon}>
-            <MailIcon size={20} />
-          </View>
-          <TextInput
-            style={styles.input}
-            autoCapitalize='none'
-            placeholder='e-posta'
-            placeholderTextColor={'#20212475'}
-            value={mail}
-            onChangeText={(e) => setMail(e)}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <View style={styles.leftIcon}>
-            <KeyIcon size={20} color='#eeeeee' />
-          </View>
-          <TextInput
-            secureTextEntry={hidden}
-            style={styles.input}
-            autoCapitalize='none'
-            placeholder='şifre'
-            placeholderTextColor={'#20212475'}
-            value={password}
-            onChangeText={(e) => setPassword(e)}
-          />
-          <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenPassword}>
-            {hidden ? <EyeOffIcon size={20} /> : <EyeOnIcon size={21} />}
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity style={styles.button} onPress={onLogin}>
-          <Text style={styles.buttonText}>Giriş Yap</Text>
-        </TouchableOpacity>
+        <CustomInput
+          leftIcon={<MailIcon size={20} />}
+          autoCapitalize='none'
+          placeholder='e-posta'
+          placeholderTextColor={'#20212475'}
+          value={mail}
+          onChangeText={(e) => setMail(e)}
+          styles={styles.input}
+        />
+        <CustomInput
+          leftIcon={<KeyIcon size={20} color='#eeeeee' />}
+          rightIcon={
+            <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenPassword}>
+              {hidden ? <EyeOffIcon size={20} /> : <EyeOnIcon size={20} />}
+            </TouchableOpacity>
+          }
+          secureTextEntry={hidden}
+          autoCapitalize='none'
+          placeholder='şifre'
+          placeholderTextColor={'#20212475'}
+          value={password}
+          onChangeText={(e) => setPassword(e)}
+          styles={styles.input}
+        />
       </View>
+      <TouchableOpacity style={styles.button} onPress={onLogin}>
+        <Text style={styles.buttonText}>Giriş Yap</Text>
+      </TouchableOpacity>
     </Layout>
   );
 };

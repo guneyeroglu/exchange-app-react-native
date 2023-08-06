@@ -25,8 +25,32 @@ export default StyleSheet.create({
     fontStyle: 'normal',
     marginBottom: 16,
   },
-  input: {
+  inputContainer: {
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
     marginBottom: 16,
+  },
+  leftIcon: {
+    position: 'absolute',
+    top: 6,
+    left: 0,
+  },
+  rightIcon: {
+    position: 'absolute',
+    top: 6,
+    right: 0,
+  },
+  input: {
+    width: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: '#202124',
+    paddingVertical: 8,
+    paddingHorizontal: 24,
+    fontSize: 14,
+    color: '#202124',
+    fontWeight: 'normal',
+    fontStyle: 'normal',
   },
   button: {
     marginVertical: 16,
