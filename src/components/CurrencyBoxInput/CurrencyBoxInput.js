@@ -39,8 +39,8 @@ export const CurrencyBoxInput = ({
     setIsCurrenctInput(symbol);
   };
 
-  const onPressToNavigate = (navigation, thisPage) => {
-    navigate(navigation, { symbol, thisPage });
+  const onPressToNavigate = (navigation, currentScreen) => {
+    navigate(navigation, { symbol, previousScreen: currentScreen });
   };
 
   return (

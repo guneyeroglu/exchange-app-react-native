@@ -6,7 +6,6 @@ import { BackIcon } from '../../global/constants/icons';
 import { Layout } from '../../components/Layout';
 import { Loading } from '../../components/Loading';
 
-import { enumScreens } from '../../global/constants/screens';
 import { moneyFormat, dateFormat } from '../../global/utils';
 import { getExchangeRateDetail } from '../../global/services';
 
@@ -14,7 +13,7 @@ import styles from './DetailScreen.style';
 
 export const DetailScreen = ({ route }) => {
   const symbol = route.params.symbol;
-  const lastPage = route.params.thisPage;
+  const previousScreen = route.params.previousScreen;
 
   const navigation = useNavigation();
 
@@ -34,7 +33,7 @@ export const DetailScreen = ({ route }) => {
   };
 
   const onPressToBack = () => {
-    navigation.navigate(lastPage);
+    navigation.navigate(previousScreen);
   };
 
   useEffect(() => {

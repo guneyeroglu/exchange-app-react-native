@@ -15,8 +15,8 @@ export const CurrencyBox = ({
 }) => {
   const { navigate } = useNavigation();
 
-  const onPressToNavigate = (navigation, thisPage) => {
-    navigate(navigation, { symbol, thisPage });
+  const onPressToNavigate = (navigation, currentScreen) => {
+    navigate(navigation, { symbol, previousScreen: currentScreen });
   };
 
   return (
