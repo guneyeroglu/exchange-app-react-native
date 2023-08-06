@@ -1,4 +1,5 @@
 export const enumScreens = {
+  LOGIN_SCREEN: 'LoginScreen',
   HOME_SCREEN: 'HomeScreen',
   ABOUT_SCREEN: 'AboutScreen',
   CALCULATION_SCREEN: 'CalculationScreen',

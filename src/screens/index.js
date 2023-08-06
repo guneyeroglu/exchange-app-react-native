@@ -6,3 +6,4 @@ export { HomeScreen } from './HomeScreen/HomeScreen';
 export { PariteScreen } from './PariteScreen/PariteScreen';
 export { SettingsScreen } from './SettingsScreen/SettingsScreen';
 export { SplashScreen } from './SplashScreen/SplashScreen';
+export { LoginScreen } from './LoginScreen/LoginScreen';

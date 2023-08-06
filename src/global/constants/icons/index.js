@@ -7,3 +7,7 @@ export { EuroIcon } from './EuroIcon';
 export { HomeIcon } from './HomeIcon';
 export { SettingIcon } from './SettingIcon';
 export { SterlinIcon } from './SterlinIcon';
+export { MailIcon } from './MailIcon';
+export { KeyIcon } from './KeyIcon';
+export { EyeOnIcon } from './EyeOnIcon';
+export { EyeOffIcon } from './EyeOffIcon';

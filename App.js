@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { AboutScreen, CalculationScreen, ContactScreen, DetailScreen, HomeScreen, PariteScreen, SettingsScreen } from './src/screens';
+import { AboutScreen, CalculationScreen, ContactScreen, DetailScreen, HomeScreen, LoginScreen, PariteScreen, SettingsScreen } from './src/screens';
 import { enumScreens } from './src/global/constants/screens';
 
 const App = () => {
@@ -12,7 +12,8 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName={enumScreens.HOME_SCREEN} tabBar={() => null}>
+        <Tab.Navigator screenOptions={{ headerShown: false }} initialRouteName={enumScreens.LOGIN_SCREEN} tabBar={() => null}>
+          <Tab.Screen name={enumScreens.LOGIN_SCREEN} component={LoginScreen} />
           <Tab.Screen name={enumScreens.HOME_SCREEN} component={HomeScreen} />
           <Tab.Screen name={enumScreens.DETAIL_SCREEN} component={DetailScreen} />
           <Tab.Screen name={enumScreens.PARITE_SCREEN} component={PariteScreen} />
