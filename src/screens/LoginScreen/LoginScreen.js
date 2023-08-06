@@ -11,10 +11,10 @@ import styles from './LoginScreen.style';
 export const LoginScreen = () => {
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
-  const [hidden, setHidden] = useState(true);
+  const [isHidden, setisHidden] = useState(true);
 
   const onPressHiddenPassword = () => {
-    setHidden((preValue) => !preValue);
+    setisHidden((preValue) => !preValue);
   };
 
   const onLogin = () => {
@@ -39,10 +39,10 @@ export const LoginScreen = () => {
           leftIcon={<KeyIcon size={20} color='#eeeeee' />}
           rightIcon={
             <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenPassword}>
-              {hidden ? <EyeOffIcon size={20} /> : <EyeOnIcon size={20} />}
+              {isHidden ? <EyeOffIcon size={20} /> : <EyeOnIcon size={20} />}
             </TouchableOpacity>
           }
-          secureTextEntry={hidden}
+          secureTextEntry={isHidden}
           autoCapitalize='none'
           placeholder='şifre'
           placeholderTextColor={'#20212475'}
