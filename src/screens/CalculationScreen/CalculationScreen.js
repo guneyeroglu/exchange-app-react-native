@@ -8,6 +8,7 @@ import { Loading } from '../../components/Loading';
 import { DolarIcon, EuroIcon } from '../../global/constants/icons';
 import { getExchangeRate } from '../../global/services/';
 import { moneyFormat } from '../../global/utils';
+import { apiURL } from '../../global/constants/urls';
 
 import styles from './CalculationScreen.style';
 
@@ -19,11 +20,11 @@ export const CalculationScreen = () => {
 
   const getAllData = async () => {
     setIsLoading(true);
-    const response = await getExchangeRate();
+    const response = await getExchangeRate(apiURL.withToken.exchange);
 
-    if (response.data.length) {
+    if (response.data.data.length) {
       setData(
-        response.data.map((item) => ({
+        response.data.data.map((item) => ({
           ...item,
           buying: moneyFormat(item.buying),
           sales: moneyFormat(item.sales),
