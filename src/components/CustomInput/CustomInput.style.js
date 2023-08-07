@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  inputContainer: {},
   container: {
     position: 'relative',
     justifyContent: 'center',
@@ -32,5 +33,34 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 6,
     right: 0,
+  },
+  errorBorder: {
+    borderBottomColor: '#d32f2f',
+    color: '#d32f2f',
+  },
+  messageContainer: {
+    flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: 8,
+    marginTop: 8,
+    marginLeft: 4,
+    paddingRight: 20,
+  },
+  hint: {
+    color: '#2979ff',
+    fontSize: 12,
+    lineHeight: 12,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+  },
+  error: {
+    color: '#d32f2f',
+    fontSize: 12,
+    lineHeight: 12,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
   },
 });
