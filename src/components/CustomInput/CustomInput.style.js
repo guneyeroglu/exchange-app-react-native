@@ -9,7 +9,8 @@ export default StyleSheet.create({
   },
   input: {
     width: '100%',
-    borderBottomWidth: 1,
+    borderWidth: 1,
+    borderColor: 'transparent',
     borderBottomColor: '#202124',
     paddingVertical: 8,
     paddingHorizontal: 8,
@@ -17,6 +18,13 @@ export default StyleSheet.create({
     color: '#202124',
     fontWeight: 'normal',
     fontStyle: 'normal',
+  },
+  disabled: {
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    borderBottomColor: '#e0e0e0',
+    borderRadius: 8,
+    backgroundColor: '#e0e0e0',
   },
   leftPadding: {
     paddingLeft: 24,
