@@ -1,7 +1,7 @@
 export { AboutIcon } from './AboutIcon';
 export { BackIcon } from './BackIcon';
 export { CalculationIcon } from './CalculationIcon';
-export { ContactIcon } from './ContactIcon';
+export { ProfileIcon } from './ProfileIcon';
 export { DolarIcon } from './DolarIcon';
 export { EuroIcon } from './EuroIcon';
 export { HomeIcon } from './HomeIcon';
@@ -11,3 +11,5 @@ export { MailIcon } from './MailIcon';
 export { KeyIcon } from './KeyIcon';
 export { EyeOnIcon } from './EyeOnIcon';
 export { EyeOffIcon } from './EyeOffIcon';
+export { UserIcon } from './UserIcon';
+export { ErrorIcon } from './ErrorIcon';
