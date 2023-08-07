@@ -1,23 +1,37 @@
-import axios from 'axios';
+import { tokenApi } from './config';
 
-const URL = 'https://exchange.akbolat.net/api/exchanges';
+export const getExchangeRate = async (url) => {
+  try {
+    const response = await tokenApi(url);
 
-export const getExchangeRate = async () => {
-  const response = await axios.get(URL);
+    return { data: response.data, status: true };
+  } catch (error) {
+    console.error('get is not working!', error);
 
-  if (response.status === 200) {
-    return response.data;
+    return { data: [], status: false };
   }
-
-  return [];
 };
 
-export const getExchangeRateDetail = async (symbol) => {
-  const response = await axios.get(`${URL}/${symbol}`);
+export const getExchangeRateDetail = async (url, symbol) => {
+  try {
+    const response = await tokenApi(`${url}/${symbol}`);
 
-  if (response.status === 200) {
-    return response.data;
+    return { data: response.data, status: true };
+  } catch (error) {
+    console.error('get is not working!', error);
+
+    return { data: [], status: false, message: error };
   }
+};
 
-  return [];
+export const postExchangeRate = async (url, data = {}) => {
+  try {
+    const response = await tokenApi.post(url, data);
+
+    return { data: response.data, status: true };
+  } catch (error) {
+    console.error('post is not working!', error);
+
+    return { data: [], status: false, message: error };
+  }
 };

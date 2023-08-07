@@ -25,32 +25,8 @@ export default StyleSheet.create({
     fontStyle: 'normal',
     marginBottom: 16,
   },
-  inputContainer: {
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginBottom: 16,
-  },
-  leftIcon: {
-    position: 'absolute',
-    top: 6,
-    left: 0,
-  },
-  rightIcon: {
-    position: 'absolute',
-    top: 6,
-    right: 0,
-  },
   input: {
-    width: '100%',
-    borderBottomWidth: 1,
-    borderBottomColor: '#202124',
-    paddingVertical: 8,
-    paddingHorizontal: 24,
-    fontSize: 14,
-    color: '#202124',
-    fontWeight: 'normal',
-    fontStyle: 'normal',
+    marginBottom: 16,
   },
   button: {
     marginVertical: 16,
@@ -68,5 +44,23 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: 'normal',
     fontStyle: 'normal',
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  footerText: {
+    color: '#202124',
+    fontSize: 16,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+  },
+  footerLink: {
+    color: '#202124',
+    fontSize: 16,
+    fontWeight: 'bold',
+    fontStyle: 'normal',
+    marginLeft: 8,
   },
 });

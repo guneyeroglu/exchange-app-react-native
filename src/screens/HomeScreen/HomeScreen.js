@@ -1,15 +1,16 @@
 import { FlatList, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
-import { SplashScreen } from '../SplashScreen/SplashScreen';
 import { Layout } from '../../components/Layout';
 import { BigCurrencyBox } from '../../components/BigCurrencyBox';
 import { PariteBox } from '../../components/PariteBox';
 import { CurrencyBox } from '../../components/CurrencyBox';
+import { Loading } from '../../components/Loading';
 
 import { DolarIcon, EuroIcon } from '../../global/constants/icons';
 import { getExchangeRate } from '../../global/services/';
 import { moneyFormat } from '../../global/utils';
+import { apiURL } from '../../global/constants/urls';
 
 import styles from './HomeScreen.style';
 
@@ -24,11 +25,11 @@ export const HomeScreen = () => {
 
   const getAllData = async () => {
     setIsLoading(true);
-    const response = await getExchangeRate();
+    const response = await getExchangeRate(apiURL.withToken.exchange);
 
-    if (response.data.length) {
+    if (response.data.data.length) {
       setData(
-        response.data.map((item) => ({
+        response.data.data.map((item) => ({
           ...item,
           buying: moneyFormat(item.buying),
           sales: moneyFormat(item.sales),
@@ -73,7 +74,7 @@ export const HomeScreen = () => {
           </View>
         </Layout>
       ) : (
-        <SplashScreen />
+        <Loading />
       )}
     </>
   );

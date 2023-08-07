@@ -45,4 +45,22 @@ export default StyleSheet.create({
     fontWeight: 'normal',
     fontStyle: 'normal',
   },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  footerText: {
+    color: '#202124',
+    fontSize: 16,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+  },
+  footerLink: {
+    color: '#202124',
+    fontSize: 16,
+    fontWeight: 'bold',
+    fontStyle: 'normal',
+    marginLeft: 8,
+  },
 });
