@@ -13,3 +13,7 @@ export { EyeOnIcon } from './EyeOnIcon';
 export { EyeOffIcon } from './EyeOffIcon';
 export { UserIcon } from './UserIcon';
 export { ErrorIcon } from './ErrorIcon';
+export { EditIcon } from './EditIcon';
+export { SaveIcon } from './SaveIcon';
+export { CancelIcon } from './CancelIcon';
+export { LogoutIcon } from './LogoutIcon';
