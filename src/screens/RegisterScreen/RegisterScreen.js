@@ -1,4 +1,4 @@
-import { Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, Image, TouchableOpacity, ScrollView, View } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
@@ -10,9 +10,9 @@ import { CustomInput } from '../../components/CustomInput';
 import { ExchangeContext } from '../../store';
 
 import { EyeOffIcon, EyeOnIcon, KeyIcon, MailIcon, UserIcon } from '../../global/constants/icons';
+import { enumScreens } from '../../global/constants/screens';
 
 import styles from './RegisterScreen.style';
-import axios from 'axios';
 
 export const RegisterScreen = () => {
   const { register } = useContext(ExchangeContext);
@@ -30,7 +30,7 @@ export const RegisterScreen = () => {
   });
 
   const formik = useFormik({
-    initialValues: { username: 'deneme1234', email: 'deneme1234@gmail.com', password: 'deneme1234', confirmPassword: 'deneme1234' },
+    initialValues: { username: '', email: '', password: '', confirmPassword: '' },
     validationSchema,
     onSubmit: async (values) => {
       await register(values, navigate);
@@ -47,6 +47,10 @@ export const RegisterScreen = () => {
 
   const onPressHiddenConfirmPassword = () => {
     setisHiddenConfirm((preValue) => !preValue);
+  };
+
+  const handleNavigateToRegister = () => {
+    navigate(enumScreens.LOGIN_SCREEN);
   };
 
   return (
@@ -114,6 +118,12 @@ export const RegisterScreen = () => {
         <TouchableOpacity style={styles.button} onPress={formik.handleSubmit}>
           <Text style={styles.buttonText}>Kaydol</Text>
         </TouchableOpacity>
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Hesabınız zaten var mı?</Text>
+          <TouchableOpacity onPress={handleNavigateToRegister}>
+            <Text style={styles.footerLink}>Giriş Yap</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </Layout>
   );

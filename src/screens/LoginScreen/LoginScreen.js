@@ -24,7 +24,7 @@ export const LoginScreen = () => {
   });
 
   const formik = useFormik({
-    initialValues: { email: 'deneme1234@gmail.com', password: 'deneme1234' },
+    initialValues: { email: '', password: '' },
     validationSchema,
     onSubmit: async (values) => {
       await login({ identifier: values.email, password: values.password }, navigate);
