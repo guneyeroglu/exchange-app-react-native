@@ -21,22 +21,37 @@ export const CurrencyBoxInput = ({
   const { navigate } = useNavigation();
   const [currentValue, setCurrentValue] = useState('');
 
-  const converMoney = (moneyValue) => {
-    const convertedValue = moneyValue.replace(/[^0-9.,]/g, '');
-    setValue(convertedValue / buying);
+  const convertMoney = (moneyValue) => {
+    const convertedValue = moneyValue
+      .replace(/[^0-9.,]/g, '')
+      .replace(/,+/g, '.')
+      .replace(/^(\d+)\.(\d*).*/, '$1.$2');
+
+    setValue(convertedValue * buying);
     setCurrentValue(convertedValue);
   };
 
   const getValue = (commingValue, secondOne) => {
-    if (commingValue === '' || commingValue === '0' || commingValue === 0) return '';
     if (symbol === isCurrentInput) return currentValue;
+    if (commingValue === '' || commingValue === '0' || commingValue === 0) return '';
 
-    return String(moneyFormat(commingValue * secondOne));
+    return moneyFormat(String(commingValue / secondOne));
   };
 
+  const _currentValue = getValue(value, buying);
+
   const focusInput = () => {
-    setValue('');
     setIsCurrenctInput(symbol);
+    setCurrentValue(_currentValue);
+
+    if (value !== '') return;
+  };
+
+  const blurInput = () => {
+    if (_currentValue === '' || _currentValue === '0' || _currentValue === 0) {
+      setValue('');
+      setCurrentValue('');
+    }
   };
 
   const onPressToNavigate = (navigation, currentScreen) => {
@@ -72,7 +87,14 @@ export const CurrencyBoxInput = ({
           </Text>
         </View>
       </View>
-      <TextInput onFocus={focusInput} style={styles.input} placeholder='Miktar' value={getValue(value, buying)} onChangeText={(e) => converMoney(e)} />
+      <TextInput
+        onFocus={focusInput}
+        onBlur={blurInput}
+        style={styles.input}
+        placeholder='Miktar'
+        value={_currentValue}
+        onChangeText={(e) => convertMoney(e)}
+      />
     </TouchableOpacity>
   );
 };

@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  layoutContainer: {
+    paddingHorizontal: 0,
+  },
   container: {
     flex: 1,
   },
@@ -13,5 +16,6 @@ export default StyleSheet.create({
   },
   containerParite: {
     marginBottom: 16,
+    marginHorizontal: 16,
   },
 });

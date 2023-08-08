@@ -2,12 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    width: '100%',
+    flex: 1,
+    marginHorizontal: 16,
     paddingVertical: 8,
     paddingHorizontal: 4,
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
     borderBottomWidth: 1,
     borderBottomColor: '#202124',
   },

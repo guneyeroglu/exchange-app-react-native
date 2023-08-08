@@ -46,7 +46,7 @@ export const HomeScreen = () => {
   return (
     <>
       {!!data.length && !isLoading ? (
-        <Layout>
+        <Layout styles={styles.layoutContainer}>
           <View style={styles.container}>
             <View style={styles.containerHeader}>
               {[data[0], data[1]].map((item) => (
