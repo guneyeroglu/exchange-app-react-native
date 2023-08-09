@@ -8,6 +8,7 @@ export const loginService = async (data) => {
 
   if (response.status === 200) {
     const jwt = response.data.jwt;
+
     tokenApi.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
     AsyncStorage.setItem('jwt', jwt);
     AsyncStorage.setItem('user', JSON.stringify(response.data.user));
@@ -24,6 +25,7 @@ export const registerService = async (data) => {
 
     if (response.status === 200) {
       const jwt = response.data.jwt;
+
       tokenApi.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
       AsyncStorage.setItem('jwt', jwt);
       AsyncStorage.setItem('user', JSON.stringify(response.data.user));

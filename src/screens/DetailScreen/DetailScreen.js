@@ -24,7 +24,7 @@ export const DetailScreen = ({ route }) => {
   const getDataDetail = async () => {
     setIsLoading(true);
 
-    const response = await getExchangeRateDetail(apiURL.withToken.exchange, symbol);
+    const response = await getExchangeRateDetail(`${apiURL.withToken.exchangeDetail}${symbol}`);
 
     if (response.data) {
       setData(response.data);
