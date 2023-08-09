@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Layout } from '../../components/Layout';
-import { CustomInput } from '../../components/CustomInput';
+import { CustomTextInput } from '../../components/CustomTextInput';
 
 import { EyeOffIcon, EyeOnIcon, KeyIcon, MailIcon } from '../../global/constants/icons';
 import { enumScreens } from '../../global/constants/screens';
@@ -48,7 +48,7 @@ export const LoginScreen = () => {
       <Image source={require('../../../assets/login.png')} style={styles.mainLogo} />
       <ScrollView style={styles.content}>
         <Text style={styles.title}>Giriş</Text>
-        <CustomInput
+        <CustomTextInput
           leftIcon={<MailIcon size={20} color={formik.touched.email && formik.errors.email && '#d32f2f'} />}
           autoCapitalize='none'
           placeholder='e-posta'
@@ -59,7 +59,7 @@ export const LoginScreen = () => {
           containerStyles={styles.input}
           error={formik.touched.email && formik.errors.email}
         />
-        <CustomInput
+        <CustomTextInput
           leftIcon={<KeyIcon size={20} color={formik.touched.password && formik.errors.password && '#d32f2f'} />}
           rightIcon={
             <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenPassword}>
@@ -74,7 +74,7 @@ export const LoginScreen = () => {
           value={formik.values.password}
           onChangeText={(e) => handleInitialValues('password', e)}
           containerStyles={styles.input}
-          hint={'Şifreniz en az 6 karakter olmalıdır.'}
+          info={'Şifreniz en az 6 karakter olmalıdır.'}
           error={formik.touched.password && formik.errors.password}
         />
         <TouchableOpacity style={styles.button} onPress={formik.handleSubmit}>

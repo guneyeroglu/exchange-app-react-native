@@ -85,6 +85,12 @@ export default StyleSheet.create({
     fontWeight: 'normal',
     fontStyle: 'normal',
   },
+  subtitle: {
+    color: '#202124',
+    fontSize: 14,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+  },
   inputContainer: {
     paddingHorizontal: 16,
     gap: 16,
@@ -106,7 +112,7 @@ export default StyleSheet.create({
     backgroundColor: '#d32f2f10',
     borderRadius: 8,
     padding: 8,
-    marginBottom: 16,
+    marginTop: 16,
     marginHorizontal: 16,
   },
   exitTxt: {

@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { Layout } from '../../components/Layout';
-import { CustomInput } from '../../components/CustomInput';
+import { CustomTextInput } from '../../components/CustomTextInput';
 
 import { ExchangeContext } from '../../store';
 
@@ -58,7 +58,7 @@ export const RegisterScreen = () => {
       <Image source={require('../../../assets/login.png')} style={styles.mainLogo} />
       <ScrollView style={styles.content}>
         <Text style={styles.title}>Üye Ol</Text>
-        <CustomInput
+        <CustomTextInput
           leftIcon={<UserIcon size={20} color={formik.touched.username && formik.errors.username && '#d32f2f'} />}
           autoCapitalize='none'
           placeholder='kullanıcı adı'
@@ -69,7 +69,7 @@ export const RegisterScreen = () => {
           containerStyles={styles.input}
           error={formik.touched.username && formik.errors.username}
         />
-        <CustomInput
+        <CustomTextInput
           leftIcon={<MailIcon size={20} color={formik.touched.email && formik.errors.email && '#d32f2f'} />}
           autoCapitalize='none'
           placeholder='e-posta'
@@ -80,7 +80,7 @@ export const RegisterScreen = () => {
           containerStyles={styles.input}
           error={formik.touched.email && formik.errors.email}
         />
-        <CustomInput
+        <CustomTextInput
           leftIcon={<KeyIcon size={20} color={formik.touched.password && formik.errors.password && '#d32f2f'} />}
           rightIcon={
             <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenPassword}>
@@ -97,7 +97,7 @@ export const RegisterScreen = () => {
           containerStyles={styles.input}
           error={formik.touched.password && formik.errors.password}
         />
-        <CustomInput
+        <CustomTextInput
           leftIcon={<KeyIcon size={20} color={formik.touched.confirmPassword && formik.errors.confirmPassword && '#d32f2f'} />}
           rightIcon={
             <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenConfirmPassword}>
@@ -112,8 +112,8 @@ export const RegisterScreen = () => {
           value={formik.values.confirmPassword}
           onChangeText={(e) => handleInitialValues('confirmPassword', e)}
           containerStyles={styles.input}
+          info={'Şifreniz en az 6 karakter olmalıdır.'}
           error={formik.touched.confirmPassword && formik.errors.confirmPassword}
-          hint={'Şifreniz en az 6 karakter olmalıdır.'}
         />
         <TouchableOpacity style={styles.button} onPress={formik.handleSubmit}>
           <Text style={styles.buttonText}>Kaydol</Text>
