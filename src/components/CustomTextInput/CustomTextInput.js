@@ -1,11 +1,11 @@
 import { View, TextInput, Text } from 'react-native';
 import React from 'react';
 
-import { ErrorIcon } from '../../global/constants/icons';
+import { ErrorIcon, InfoIcon } from '../../global/constants/icons';
 
-import styles from './CustomInput.style.js';
+import styles from './CustomTextInput.style.js';
 
-export const CustomInput = ({
+export const CustomTextInput = ({
   value,
   onChangeText,
   leftIcon = null,
@@ -13,7 +13,7 @@ export const CustomInput = ({
   styles: _styles = {},
   containerStyles = {},
   error = null,
-  hint = null,
+  info = null,
   editable = true,
   ...rest
 }) => {
@@ -36,10 +36,10 @@ export const CustomInput = ({
           {...rest}
         />
         {rightIcon && <View style={styles.rightIcon}>{rightIcon}</View>}
-        {hint && (
+        {info && (
           <View style={styles.messageContainer}>
-            <ErrorIcon size={12} color='#2979ff' />
-            <Text style={styles.hint}>{hint}</Text>
+            <InfoIcon size={12} color='#2979ff' />
+            <Text style={styles.info}>{info}</Text>
           </View>
         )}
         {error && (

@@ -27,20 +27,22 @@ export default StyleSheet.create({
     backgroundColor: '#e0e0e0',
   },
   leftPadding: {
-    paddingLeft: 24,
+    paddingLeft: 34,
   },
   rightPadding: {
-    paddingRight: 24,
+    paddingRight: 34,
   },
   leftIcon: {
     position: 'absolute',
-    top: 6,
-    left: 0,
+    top: 8,
+    left: 10,
+    zIndex: 1,
   },
   rightIcon: {
     position: 'absolute',
-    top: 6,
-    right: 0,
+    top: 8,
+    right: 10,
+    zIndex: 1,
   },
   errorBorder: {
     borderBottomColor: '#d32f2f',
@@ -57,7 +59,7 @@ export default StyleSheet.create({
     marginLeft: 4,
     paddingRight: 20,
   },
-  hint: {
+  info: {
     color: '#2979ff',
     fontSize: 12,
     lineHeight: 12,
