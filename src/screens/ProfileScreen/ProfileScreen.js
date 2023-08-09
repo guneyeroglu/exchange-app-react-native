@@ -8,7 +8,7 @@ import { Layout } from '../../components/Layout';
 import { CustomTextInput } from '../../components/CustomTextInput';
 import { ExchangeContext } from '../../store';
 
-import { dateFormat } from '../../global/utils';
+import { apiURL } from '../../global/constants/urls';
 import {
   CancelIcon,
   EditIcon,
@@ -22,6 +22,9 @@ import {
   BirthdayIcon,
   SecretIcon,
 } from '../../global/constants/icons';
+
+import { putUserInformation } from '../../global/services';
+import { dateFormat } from '../../global/utils';
 
 import styles from './ProfileScreen.style';
 
@@ -48,9 +51,7 @@ export const ProfileScreen = () => {
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('Kullanıcı adı alanı zorunludur'),
-    email: Yup.string(),
     birthday: Yup.string(),
-    updatedAt: Yup.string(),
     gender: Yup.string(),
     phone: Yup.string(),
     university: Yup.string(),
@@ -58,10 +59,14 @@ export const ProfileScreen = () => {
   });
 
   const formik = useFormik({
-    initialValues: { username, email, birthday, gender, updatedAt, phone, university, city },
+    initialValues: { username, birthday, gender, phone, university, city },
     validationSchema,
-    onSubmit: (values) => {
-      handleSave();
+    onSubmit: async (values) => {
+      const response = await putUserInformation(`${apiURL.withToken.userInformation}${id}`, values);
+
+      if (response.status) {
+        handleSave();
+      }
     },
   });
 
@@ -75,7 +80,6 @@ export const ProfileScreen = () => {
 
   const onPressToCancel = () => {
     formik.setFieldValue('username', username);
-    formik.setFieldValue('email', email);
     formik.setFieldValue('birthday', birthday);
     formik.setFieldValue('gender', gender);
     formik.setFieldValue('phone', phone);
@@ -136,13 +140,7 @@ export const ProfileScreen = () => {
               editable={editable}
               error={formik.touched.username && formik.errors.username}
             />
-            <CustomTextInput
-              name='email'
-              leftIcon={<MailIcon size={20} />}
-              value={formik.values.email}
-              onChangeText={(e) => handleValueChange('email', e)}
-              editable={false}
-            />
+            <CustomTextInput name='email' leftIcon={<MailIcon size={20} />} value={email} editable={false} />
             <CustomTextInput
               name='birthday'
               leftIcon={<BirthdayIcon size={20} />}
