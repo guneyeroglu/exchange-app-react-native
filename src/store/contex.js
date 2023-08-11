@@ -2,7 +2,7 @@ import { useState, createContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { tokenApi } from '../global/services/config/';
-import { loginService, registerService } from '../global/services';
+import { loginService, registerService, updateUserInformationService } from '../global/services';
 import { enumScreens } from '../global/constants/screens';
 
 export const ExchangeContext = createContext();
@@ -53,5 +53,17 @@ export const Provider = ({ children }) => {
     navigate(enumScreens.LOGIN_SCREEN);
   };
 
-  return <ExchangeContext.Provider value={{ user, isAuthenticated, login, logout, register, handleAuthControl }}>{children}</ExchangeContext.Provider>;
+  const updateUserInformation = async (data, id) => {
+    const response = await updateUserInformationService(data, id);
+
+    if (response.status) {
+      setUser(response.data);
+    }
+  };
+
+  return (
+    <ExchangeContext.Provider value={{ user, isAuthenticated, login, logout, register, handleAuthControl, updateUserInformation }}>
+      {children}
+    </ExchangeContext.Provider>
+  );
 };

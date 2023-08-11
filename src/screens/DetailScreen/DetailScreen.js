@@ -8,7 +8,6 @@ import { Loading } from '../../components/Loading';
 
 import { moneyFormat, dateFormat } from '../../global/utils';
 import { getExchangeRateDetail } from '../../global/services';
-import { apiURL } from '../../global/constants/urls';
 
 import styles from './DetailScreen.style';
 
@@ -24,7 +23,7 @@ export const DetailScreen = ({ route }) => {
   const getDataDetail = async () => {
     setIsLoading(true);
 
-    const response = await getExchangeRateDetail(`${apiURL.withToken.exchangeDetail}${symbol}`);
+    const response = await getExchangeRateDetail(symbol);
 
     if (response.data) {
       setData(response.data);

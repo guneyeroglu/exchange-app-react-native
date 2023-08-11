@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
 
 export default StyleSheet.create({
   layoutContainer: {
@@ -17,7 +19,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     gap: 8,
     padding: 8,
-    backgroundColor: '#20212410',
+    backgroundColor: '#e0e0e0',
     borderWidth: 1,
     borderColor: '#202124',
     borderRadius: 8,
@@ -118,6 +120,29 @@ export default StyleSheet.create({
   exitTxt: {
     color: '#d32f2f',
     fontSize: 16,
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+  },
+  genderContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  genderButton: {
+    borderWidth: 1,
+    borderColor: '#202124',
+    width: width / 3 - 16,
+    height: 40,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  genderButtonActive: {
+    backgroundColor: '#e0e0e0',
+  },
+  genderTxt: {
+    textAlign: 'center',
+    fontSize: 12,
     fontWeight: 'normal',
     fontStyle: 'normal',
   },

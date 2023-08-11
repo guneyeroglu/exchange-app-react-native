@@ -10,7 +10,6 @@ import { Loading } from '../../components/Loading';
 import { DolarIcon, EuroIcon } from '../../global/constants/icons';
 import { getExchangeRate } from '../../global/services/';
 import { moneyFormat } from '../../global/utils';
-import { apiURL } from '../../global/constants/urls';
 
 import styles from './HomeScreen.style';
 
@@ -25,7 +24,7 @@ export const HomeScreen = () => {
 
   const getAllData = async () => {
     setIsLoading(true);
-    const response = await getExchangeRate(apiURL.withToken.exchange);
+    const response = await getExchangeRate();
 
     if (response.data.data.length) {
       setData(
