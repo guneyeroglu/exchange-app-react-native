@@ -21,6 +21,6 @@ export { LogoutIcon } from './LogoutIcon';
 export { CityIcon } from './CityIcon';
 export { UniversityIcon } from './UniversityIcon';
 export { PhoneIcon } from './PhoneIcon';
-export { SecretIcon } from './SecretIcon';
+export { GenderIcon } from './GenderIcon';
 export { CalendarIcon } from './CalendarIcon';
 export { BirthdayIcon } from './BirthdayIcon';
