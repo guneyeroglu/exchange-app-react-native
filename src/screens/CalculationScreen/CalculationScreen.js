@@ -5,10 +5,8 @@ import { Layout } from '../../components/Layout';
 import { CurrencyBoxInput } from '../../components/CurrencyBoxInput';
 import { Loading } from '../../components/Loading';
 
-import { DolarIcon, EuroIcon } from '../../global/constants/icons';
 import { getExchangeRate } from '../../global/services/';
 import { moneyFormat } from '../../global/utils';
-import { apiURL } from '../../global/constants/urls';
 
 import styles from './CalculationScreen.style';
 
@@ -20,7 +18,7 @@ export const CalculationScreen = () => {
 
   const getAllData = async () => {
     setIsLoading(true);
-    const response = await getExchangeRate(apiURL.withToken.exchange);
+    const response = await getExchangeRate();
 
     if (response.data.data.length) {
       setData(
