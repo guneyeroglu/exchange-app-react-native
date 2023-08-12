@@ -1,12 +1,13 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import moment from 'moment';
 
-import { BackIcon } from '../../global/constants/icons';
 import { Layout } from '../../components/Layout';
 import { Loading } from '../../components/Loading';
 
-import { moneyFormat, dateFormat } from '../../global/utils';
+import { BackIcon } from '../../global/constants/icons';
+import { moneyFormat } from '../../global/utils';
 import { getExchangeRateDetail } from '../../global/services';
 
 import styles from './DetailScreen.style';
@@ -61,7 +62,7 @@ export const DetailScreen = ({ route }) => {
               <View key={item.buy * item.sale + item.date} style={[styles.tableRow, index % 2 !== 0 ? styles.tableSecondRow : {}]}>
                 <Text style={[styles.tableRowTxt, styles.firstTxt]}>{`${moneyFormat(item.sale)} ₺`}</Text>
                 <Text style={[styles.tableRowTxt, styles.middleTxt]}>{`${moneyFormat(item.buy)} ₺`}</Text>
-                <Text style={[styles.tableRowTxt, styles.lastTxt]}>{dateFormat(item.date)}</Text>
+                <Text style={[styles.tableRowTxt, styles.lastTxt]}>{moment(item.date).format('DD.MM.YYYY')}</Text>
               </View>
             ))}
           </View>

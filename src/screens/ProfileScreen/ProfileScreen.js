@@ -1,11 +1,14 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import moment from 'moment';
 
 import { Layout } from '../../components/Layout';
-import { CustomTextInput } from '../../components/CustomTextInput';
+import { CustomTextInput, CustomTextInputMask } from '../../components/CustomTextInput';
+import { CustomDatePicker } from '../../components/CustomDatePicker';
+
 import { ExchangeContext } from '../../store';
 
 import {
@@ -20,9 +23,8 @@ import {
   PhoneIcon,
   BirthdayIcon,
   GenderIcon,
+  CalendarIcon,
 } from '../../global/constants/icons';
-
-import { dateFormat } from '../../global/utils';
 
 import styles from './ProfileScreen.style';
 
@@ -30,13 +32,14 @@ export const ProfileScreen = () => {
   const { user, logout, updateUserInformation } = useContext(ExchangeContext);
   const { navigate } = useNavigation();
   const [editable, setEditable] = useState(false);
+  const [datePickerVisibility, setDatePickerVisibility] = useState(false);
 
   const id = user && user.id ? user.id : '';
   const username = user && user.username ? user.username : '';
   const email = user && user.email ? user.email : '';
-  const birthday = user && user.birthday ? dateFormat(user.birthday) : '';
-  const createdAt = user && user.createdAt ? dateFormat(user.createdAt) : '';
-  const updatedAt = user && user.updatedAt ? dateFormat(user.updatedAt) : '';
+  const birthday = user && user.birthday ? user.birthday : '';
+  const createdAt = user && user.createdAt ? moment(user.createdAt).format('DD.MM.YYYY') : '';
+  const updatedAt = user && user.updatedAt ? moment(user.updatedAt).format('DD.MM.YYYY') : '';
   const gender = user && user.gender ? user.gender : '3';
   const phone = user && user.phone ? user.phone : '';
   const university = user && user.university ? user.university : '';
@@ -89,19 +92,22 @@ export const ProfileScreen = () => {
     formik.setFieldValue('city', city);
 
     setEditable(false);
+    setDatePickerVisibility(false);
   };
 
   const handleSave = () => {
     setEditable(false);
+    setDatePickerVisibility(false);
   };
 
   const onPressToLogout = () => {
     logout(navigate);
   };
 
-  useEffect(() => {
-    formik.resetForm();
-  }, [editable]);
+  const onChangeDatePicker = (event) => {
+    formik.setFieldValue('birthday', moment(event).toISOString());
+    setDatePickerVisibility(false);
+  };
 
   return (
     <Layout styles={styles.layoutContainer}>
@@ -139,6 +145,7 @@ export const ProfileScreen = () => {
         <ScrollView>
           <View style={styles.inputContainer}>
             <CustomTextInput
+              key={username}
               name='username'
               autoCapitalize='none'
               leftIcon={<UserIcon size={20} color={formik.touched.username && formik.errors.username && '#d32f2f'} />}
@@ -148,15 +155,24 @@ export const ProfileScreen = () => {
               error={formik.touched.username && formik.errors.username}
             />
             <CustomTextInput name='email' leftIcon={<MailIcon size={20} />} value={email} editable={false} />
-            <CustomTextInput
-              name='birthday'
-              autoCapitalize='none'
-              leftIcon={<BirthdayIcon size={20} />}
-              value={formik.values.birthday}
-              onChangeText={(e) => handleValueChange('birthday', e)}
-              editable={editable}
-              error={formik.touched.birthday && formik.errors.birthday}
-            />
+            {!datePickerVisibility && (
+              <CustomTextInput
+                name='birthday'
+                autoCapitalize='none'
+                leftIcon={<BirthdayIcon size={20} color={formik.touched.birthday && formik.errors.birthday && '#d32f2f'} />}
+                rightIcon={
+                  editable ? (
+                    <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
+                      <CalendarIcon size={20} color={formik.touched.birthday && formik.errors.birthday && '#d32f2f'} />
+                    </TouchableOpacity>
+                  ) : null
+                }
+                value={moment(formik.values.birthday).format('DD.MM.YYYY')}
+                onChangeText={(e) => handleValueChange('birthday', e)}
+                editable={false}
+                error={formik.touched.birthday && formik.errors.birthday}
+              />
+            )}
             {!editable ? (
               <CustomTextInput
                 name='gender'
@@ -187,7 +203,8 @@ export const ProfileScreen = () => {
                 </TouchableOpacity>
               </View>
             )}
-            <CustomTextInput
+            <CustomTextInputMask
+              mask={'0999 999 9999'}
               name='phone'
               autoCapitalize='none'
               leftIcon={<PhoneIcon size={20} />}
@@ -222,6 +239,14 @@ export const ProfileScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      {editable && datePickerVisibility && (
+        <CustomDatePicker
+          value={new Date(birthday)}
+          display='spinner'
+          onPressToCancel={() => setDatePickerVisibility(false)}
+          onPressToSubmit={onChangeDatePicker}
+        />
+      )}
     </Layout>
   );
 };
