@@ -23,7 +23,7 @@ export const BottomTabNavigator = () => {
   const currenctRoute = (routeName) => {
     if (route.name === routeName) return { color: '#202124', size: 40 };
 
-    return { color: '#20212495', size: 32 };
+    return { color: '#20212475', size: 32 };
   };
 
   const onPressToNavigate = (navigation) => {

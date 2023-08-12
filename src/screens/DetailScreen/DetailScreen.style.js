@@ -55,7 +55,7 @@ export default StyleSheet.create({
     marginBottom: 4,
   },
   tableSecondRow: {
-    backgroundColor: '#20212485',
+    backgroundColor: '#20212475',
   },
   tableRowTxt: {
     fontSize: 12,
