@@ -9,6 +9,7 @@ export default StyleSheet.create({
     right: 0,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 999,
   },
   shadow: {
     position: 'absolute',

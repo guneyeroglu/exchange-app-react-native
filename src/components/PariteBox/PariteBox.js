@@ -30,7 +30,7 @@ export const PariteBox = ({
       </View>
       <View>
         <Text style={styles.title}>{`${firstCurrency.symbol}/${secondCurrency.symbol} Paritesi`}</Text>
-        <Text style={styles.subtitle}>{moneyFormat(firstCurrency.sales / secondCurrency.sales)}</Text>
+        <Text style={styles.subtitle}>{moneyFormat(firstCurrency.sales / secondCurrency.sales)} ₺</Text>
       </View>
     </View>
   );

@@ -5,5 +5,6 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     backgroundColor: '#eeeeee',
+    justifyContent: 'flex-end',
   },
 });

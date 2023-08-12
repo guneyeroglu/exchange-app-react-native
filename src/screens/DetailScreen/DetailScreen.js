@@ -19,7 +19,7 @@ export const DetailScreen = ({ route }) => {
   const navigation = useNavigation();
 
   const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getDataDetail = async () => {
     setIsLoading(true);

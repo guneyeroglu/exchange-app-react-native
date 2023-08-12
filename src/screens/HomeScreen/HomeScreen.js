@@ -15,7 +15,7 @@ import styles from './HomeScreen.style';
 
 export const HomeScreen = () => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const currencyIcon = {
     USD: <DolarIcon size={72} color='#202124' stroke={'#eeeeee'} />,
@@ -44,8 +44,8 @@ export const HomeScreen = () => {
 
   return (
     <>
-      {!!data.length && !isLoading ? (
-        <Layout styles={styles.layoutContainer}>
+      <Layout styles={styles.layoutContainer}>
+        {!isLoading && (
           <View style={styles.container}>
             <View style={styles.containerHeader}>
               {[data[0], data[1]].map((item) => (
@@ -71,10 +71,9 @@ export const HomeScreen = () => {
               keyExtractor={(item) => item.symbol}
             />
           </View>
-        </Layout>
-      ) : (
-        <Loading />
-      )}
+        )}
+        {isLoading && <Loading />}
+      </Layout>
     </>
   );
 };

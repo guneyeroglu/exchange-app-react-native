@@ -12,7 +12,7 @@ import styles from './CalculationScreen.style';
 
 export const CalculationScreen = () => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [value, setValue] = useState('');
   const [isCurrentInput, setIsCurrenctInput] = useState('');
 
@@ -38,8 +38,8 @@ export const CalculationScreen = () => {
 
   return (
     <>
-      {!!data.length && !isLoading ? (
-        <Layout styles={styles.container}>
+      <Layout styles={styles.container}>
+        {!isLoading && (
           <FlatList
             data={data}
             renderItem={({ item }) => (
@@ -56,10 +56,9 @@ export const CalculationScreen = () => {
             )}
             keyExtractor={(item) => item.symbol}
           />
-        </Layout>
-      ) : (
-        <Loading />
-      )}
+        )}
+        {isLoading && <Loading />}
+      </Layout>
     </>
   );
 };

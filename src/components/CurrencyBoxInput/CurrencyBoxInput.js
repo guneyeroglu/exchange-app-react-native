@@ -75,7 +75,7 @@ export const CurrencyBoxInput = ({
             Alış
           </Text>
           <Text numberOfLines={1} ellipsizeMode='tail' style={styles.subtitle}>
-            {buying}
+            {buying} ₺
           </Text>
         </View>
         <View style={styles.infoContainer}>
@@ -83,7 +83,7 @@ export const CurrencyBoxInput = ({
             Satış
           </Text>
           <Text numberOfLines={1} ellipsizeMode='tail' style={styles.subtitle}>
-            {sales}
+            {sales} ₺
           </Text>
         </View>
       </View>
