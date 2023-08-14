@@ -1,10 +1,11 @@
-import { FlatList, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { Layout } from '../../components/Layout';
 import { CurrencyBoxInput } from '../../components/CurrencyBoxInput';
 import { Loading } from '../../components/Loading';
 
+import { TurkeyIcon } from '../../global/constants/icons';
 import { getExchangeRate } from '../../global/services/';
 import { moneyFormat } from '../../global/utils';
 
@@ -14,6 +15,8 @@ export const CalculationScreen = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [value, setValue] = useState('');
+  const [buying, setBuying] = useState('');
+  const [sales, setSales] = useState('');
   const [isCurrentInput, setIsCurrenctInput] = useState('');
 
   const getAllData = async () => {
@@ -38,24 +41,51 @@ export const CalculationScreen = () => {
 
   return (
     <>
-      <Layout styles={styles.container}>
+      <Layout style={styles.container}>
         {!isLoading && (
-          <FlatList
-            data={data}
-            renderItem={({ item }) => (
-              <View style={styles.currencyContainer}>
-                <CurrencyBoxInput
-                  {...{ ...item, iconUri: item.icon }}
-                  key={item.symbol}
-                  value={value}
-                  setValue={setValue}
-                  isCurrentInput={isCurrentInput}
-                  setIsCurrenctInput={setIsCurrenctInput}
-                />
+          <>
+            <View style={styles.localContainer}>
+              <View style={styles.localIcon}>
+                <TurkeyIcon size={32} />
               </View>
-            )}
-            keyExtractor={(item) => item.symbol}
-          />
+              <View style={styles.localType}>
+                <Text style={styles.localTypeTitle}>TRY</Text>
+                <Text style={styles.localTypeSubtitle}>Türk Lirası</Text>
+              </View>
+              <View style={styles.localInfoContainer}>
+                <View style={styles.localInfo}>
+                  <Text style={styles.localInfoText}>Alış</Text>
+                  <Text style={styles.localInfoMoney} numberOfLines={1} ellipsizeMode='tail'>
+                    {moneyFormat(buying)} ₺
+                  </Text>
+                </View>
+                <View style={styles.localInfo}>
+                  <Text style={styles.localInfoText}>Satış</Text>
+                  <Text style={styles.localInfoMoney} numberOfLines={1} ellipsizeMode='tail'>
+                    {moneyFormat(sales)} ₺
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                <View style={styles.currencyContainer}>
+                  <CurrencyBoxInput
+                    {...{ ...item, iconUri: item.icon }}
+                    key={item.symbol}
+                    value={value}
+                    setValue={setValue}
+                    setBuying={setBuying}
+                    setSales={setSales}
+                    isCurrentInput={isCurrentInput}
+                    setIsCurrenctInput={setIsCurrenctInput}
+                  />
+                </View>
+              )}
+              keyExtractor={(item) => item.symbol}
+            />
+          </>
         )}
         {isLoading && <Loading />}
       </Layout>

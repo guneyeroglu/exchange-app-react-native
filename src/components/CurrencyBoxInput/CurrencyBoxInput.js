@@ -15,6 +15,8 @@ export const CurrencyBoxInput = ({
   sales = 27.8514,
   value = '',
   setValue,
+  setBuying,
+  setSales,
   isCurrentInput,
   setIsCurrenctInput,
 }) => {
@@ -22,12 +24,16 @@ export const CurrencyBoxInput = ({
   const [currentValue, setCurrentValue] = useState('');
 
   const convertMoney = (moneyValue) => {
+    if (moneyValue === '.' || moneyValue === ',') return setCurrentValue('0.');
+
     const convertedValue = moneyValue
       .replace(/[^0-9.,]/g, '')
       .replace(/,+/g, '.')
       .replace(/^(\d+)\.(\d*).*/, '$1.$2');
 
     setValue(convertedValue * buying);
+    setBuying(convertedValue * buying);
+    setSales(convertedValue * sales);
     setCurrentValue(convertedValue);
   };
 
@@ -56,6 +62,12 @@ export const CurrencyBoxInput = ({
 
   const onPressToNavigate = (navigation, currentScreen) => {
     navigate(navigation, { symbol, previousScreen: currentScreen });
+  };
+
+  const onKeyPressToMaxLength = (key) => {
+    if (currentValue.includes('.')) return;
+
+    if (key === '.' || key === ',') setCurrentValue((preValue) => preValue + '.');
   };
 
   return (
@@ -93,7 +105,9 @@ export const CurrencyBoxInput = ({
         style={styles.input}
         placeholder='Miktar'
         value={_currentValue}
-        onChangeText={(e) => convertMoney(e)}
+        onChangeText={convertMoney}
+        onKeyPress={(e) => onKeyPressToMaxLength(e.nativeEvent.key)}
+        maxLength={currentValue.includes('.') ? 9 : 5}
       />
     </TouchableOpacity>
   );

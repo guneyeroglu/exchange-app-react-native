@@ -29,11 +29,13 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 4,
     fontStyle: 'normal',
+    color: '#202124',
   },
   name: {
     fontSize: 10,
     fontWeight: 'normal',
     fontStyle: 'italic',
+    color: '#202124',
   },
   info: {
     flex: 1,
@@ -50,6 +52,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontStyle: 'normal',
     marginBottom: 8,
+    color: '#202124',
   },
   subtitle: {
     fontSize: 10,
