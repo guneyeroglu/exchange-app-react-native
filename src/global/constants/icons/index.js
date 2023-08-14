@@ -24,3 +24,4 @@ export { PhoneIcon } from './PhoneIcon';
 export { GenderIcon } from './GenderIcon';
 export { CalendarIcon } from './CalendarIcon';
 export { BirthdayIcon } from './BirthdayIcon';
+export { TurkeyIcon } from './TurkeyIcon';
