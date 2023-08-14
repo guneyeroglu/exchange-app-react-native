@@ -8,6 +8,7 @@ import moment from 'moment';
 import { Layout } from '../../components/Layout';
 import { CustomTextInput, CustomTextInputMask } from '../../components/CustomTextInput';
 import { CustomDatePicker } from '../../components/CustomDatePicker';
+import { Modal } from '../../components/Modal';
 
 import { ExchangeContext } from '../../store';
 
@@ -31,8 +32,10 @@ import styles from './ProfileScreen.style';
 export const ProfileScreen = () => {
   const { user, logout, updateUserInformation } = useContext(ExchangeContext);
   const { navigate } = useNavigation();
-  const [editable, setEditable] = useState(false);
   const [datePickerVisibility, setDatePickerVisibility] = useState(false);
+  const [editable, setEditable] = useState(false);
+  const [saveModal, setSaveModal] = useState(false);
+  const [logoutModal, setLogoutModal] = useState(false);
 
   const id = user && user.id ? user.id : '';
   const username = user && user.username ? user.username : '';
@@ -68,11 +71,7 @@ export const ProfileScreen = () => {
   const formik = useFormik({
     initialValues: { username, birthday, gender, phone, university, city },
     validationSchema,
-    onSubmit: async (values) => {
-      await updateUserInformation(values, id);
-
-      handleSave();
-    },
+    onSubmit: () => setSaveModal(true),
   });
 
   const handleValueChange = (state, value) => {
@@ -95,9 +94,12 @@ export const ProfileScreen = () => {
     setDatePickerVisibility(false);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    await updateUserInformation(formik.values, id);
+
     setEditable(false);
     setDatePickerVisibility(false);
+    setSaveModal(false);
   };
 
   const onPressToLogout = () => {
@@ -110,7 +112,7 @@ export const ProfileScreen = () => {
   };
 
   return (
-    <Layout styles={styles.layoutContainer}>
+    <Layout style={styles.layoutContainer}>
       <View style={styles.header}>
         {!editable ? (
           <View style={styles.editContainer}>
@@ -233,7 +235,7 @@ export const ProfileScreen = () => {
           </View>
         </ScrollView>
         <View style={styles.footer}>
-          <TouchableOpacity style={styles.exit} onPress={onPressToLogout}>
+          <TouchableOpacity style={styles.exit} onPress={() => setLogoutModal(true)}>
             <LogoutIcon size={24} color='#d32f2f' />
             <Text style={styles.exitTxt}>Çıkış</Text>
           </TouchableOpacity>
@@ -247,6 +249,20 @@ export const ProfileScreen = () => {
           onPressToSubmit={onChangeDatePicker}
         />
       )}
+      <Modal
+        open={saveModal}
+        title={'Profil Bilgisini Güncelle'}
+        subtitle={'Değişiklikleri kaydetmek istediğinizden emin misiniz?'}
+        onCancelButton={{ text: 'İptal', onPress: () => setSaveModal(false) }}
+        onConfirmButton={{ text: 'Kaydet', onPress: handleSave }}
+      />
+      <Modal
+        open={logoutModal}
+        title={'Çıkış Yap'}
+        subtitle={'Çıkış yapmak istediğinizden emin misiniz?'}
+        onCancelButton={{ text: 'İptal', onPress: () => setLogoutModal(false) }}
+        onConfirmButton={{ text: 'Çıkış Yap', onPress: onPressToLogout, buttonStyles: styles.modalExit, textStyles: styles.modalExitTxt }}
+      />
     </Layout>
   );
 };
