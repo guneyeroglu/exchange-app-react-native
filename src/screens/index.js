@@ -1,4 +1,3 @@
-export { AboutScreen } from './AboutScreen/AboutScreen';
 export { CalculationScreen } from './CalculationScreen/CalculationScreen';
 export { ProfileScreen } from './ProfileScreen/ProfileScreen';
 export { DetailScreen } from './DetailScreen/DetailScreen';

@@ -14,7 +14,6 @@ export const BottomTabNavigator = () => {
 
   const buttons = [
     { id: 'homeTab', icon: HomeIcon, route: enumScreens.HOME_SCREEN },
-    { id: 'aboutTab', icon: AboutIcon, route: enumScreens.ABOUT_SCREEN },
     { id: 'calculationTab', icon: CalculationIcon, route: enumScreens.CALCULATION_SCREEN },
     { id: 'profileTab', icon: ProfileIcon, route: enumScreens.PROFILE_SCREEN },
     { id: 'settingsTab', icon: SettingIcon, route: enumScreens.SETTINGS_SCREEN },
