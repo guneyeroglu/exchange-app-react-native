@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -7,6 +7,7 @@ export default StyleSheet.create({
     paddingHorizontal: 8,
     paddingBottom: 8,
     paddingTop: 16,
+    zIndex: -1,
   },
   button: {
     height: 48,
