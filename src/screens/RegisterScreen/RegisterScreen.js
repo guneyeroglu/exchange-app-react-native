@@ -54,7 +54,7 @@ export const RegisterScreen = () => {
   };
 
   return (
-    <Layout bottomTabNavigator={false} styles={styles.container}>
+    <Layout bottomTabNavigator={false} style={styles.container}>
       <Image source={require('../../../assets/login.png')} style={styles.mainLogo} />
       <ScrollView style={styles.content}>
         <Text style={styles.title}>Üye Ol</Text>
@@ -66,7 +66,7 @@ export const RegisterScreen = () => {
           name='username'
           value={formik.values.username}
           onChangeText={(e) => handleInitialValues('username', e)}
-          containerStyles={styles.input}
+          containerStyle={styles.input}
           error={formik.touched.username && formik.errors.username}
         />
         <CustomTextInput
@@ -77,7 +77,7 @@ export const RegisterScreen = () => {
           name='email'
           value={formik.values.email}
           onChangeText={(e) => handleInitialValues('email', e)}
-          containerStyles={styles.input}
+          containerStyle={styles.input}
           error={formik.touched.email && formik.errors.email}
         />
         <CustomTextInput
@@ -94,7 +94,7 @@ export const RegisterScreen = () => {
           name='password'
           value={formik.values.password}
           onChangeText={(e) => handleInitialValues('password', e)}
-          containerStyles={styles.input}
+          containerStyle={styles.input}
           error={formik.touched.password && formik.errors.password}
         />
         <CustomTextInput
@@ -111,7 +111,7 @@ export const RegisterScreen = () => {
           name='confirmPassword'
           value={formik.values.confirmPassword}
           onChangeText={(e) => handleInitialValues('confirmPassword', e)}
-          containerStyles={styles.input}
+          containerStyle={styles.input}
           info={'Şifreniz en az 6 karakter olmalıdır.'}
           error={formik.touched.confirmPassword && formik.errors.confirmPassword}
         />

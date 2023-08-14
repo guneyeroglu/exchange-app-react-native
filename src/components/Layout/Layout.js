@@ -7,11 +7,11 @@ import { BottomTabNavigator } from '../BottomTabNavigator';
 
 import styles from './Layout.style';
 
-export const Layout = ({ children, bottomTabNavigator = true, styles: _styles = {} }) => {
+export const Layout = ({ children, bottomTabNavigator = true, style = {} }) => {
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom, ..._styles }]}>
+    <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom, ...style }]}>
       <StatusBar style='auto' />
       {children}
       {bottomTabNavigator && <BottomTabNavigator />}

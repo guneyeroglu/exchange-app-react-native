@@ -10,8 +10,8 @@ export const CustomTextInput = ({
   onChangeText,
   leftIcon = null,
   rightIcon = null,
-  styles: _styles = {},
-  containerStyles = {},
+  style = {},
+  containerStyle = {},
   error = null,
   info = null,
   editable = true,
@@ -19,7 +19,7 @@ export const CustomTextInput = ({
 }) => {
   return (
     <View style={styles.inputContainer}>
-      <View style={[styles.container, containerStyles]}>
+      <View style={[styles.container, containerStyle]}>
         {leftIcon && <View style={styles.leftIcon}>{leftIcon}</View>}
         <TextInput
           style={[
@@ -28,7 +28,7 @@ export const CustomTextInput = ({
             rightIcon ? styles.rightPadding : {},
             error ? styles.errorBorder : {},
             !editable ? styles.disabled : {},
-            _styles,
+            style,
           ]}
           value={value}
           onChangeText={onChangeText}

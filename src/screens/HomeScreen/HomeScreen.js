@@ -44,7 +44,7 @@ export const HomeScreen = () => {
 
   return (
     <>
-      <Layout styles={styles.layoutContainer}>
+      <Layout style={styles.layoutContainer}>
         {!isLoading && (
           <View style={styles.container}>
             <View style={styles.containerHeader}>

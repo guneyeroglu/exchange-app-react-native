@@ -44,7 +44,7 @@ export const LoginScreen = () => {
   };
 
   return (
-    <Layout bottomTabNavigator={false} styles={styles.container}>
+    <Layout bottomTabNavigator={false} style={styles.container}>
       <Image source={require('../../../assets/login.png')} style={styles.mainLogo} />
       <ScrollView style={styles.content}>
         <Text style={styles.title}>Giriş</Text>
@@ -56,7 +56,7 @@ export const LoginScreen = () => {
           name='email'
           value={formik.values.email}
           onChangeText={(e) => handleInitialValues('email', e)}
-          containerStyles={styles.input}
+          containerStyle={styles.input}
           error={formik.touched.email && formik.errors.email}
         />
         <CustomTextInput
@@ -73,7 +73,7 @@ export const LoginScreen = () => {
           name='password'
           value={formik.values.password}
           onChangeText={(e) => handleInitialValues('password', e)}
-          containerStyles={styles.input}
+          containerStyle={styles.input}
           info={'Şifreniz en az 6 karakter olmalıdır.'}
           error={formik.touched.password && formik.errors.password}
         />

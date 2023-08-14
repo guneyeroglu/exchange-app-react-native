@@ -42,7 +42,7 @@ export const DetailScreen = ({ route }) => {
   }, [symbol]);
 
   return (
-    <Layout bottomTabNavigator={false} styles={styles.container}>
+    <Layout bottomTabNavigator={false} style={styles.container}>
       {!isLoading && (
         <>
           <View style={styles.header}>
