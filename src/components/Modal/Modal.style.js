@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 const { width, height } = Dimensions.get('screen');
 
@@ -9,7 +10,7 @@ export default StyleSheet.create({
     height,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#20212495',
+    backgroundColor: colors.black_95,
   },
   hiddenClose: {
     position: 'absolute',
@@ -22,7 +23,7 @@ export default StyleSheet.create({
   containerContent: {
     backgroundColor: '#eeeeee',
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     minWidth: (width * 2) / 3,
     maxWidth: width - 32,
     minHeight: 100,
@@ -30,7 +31,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     zIndex: 999,
-    shadowColor: '#202124',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 0,
@@ -67,7 +68,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#eeeeee',
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 8,
   },
   cancelTxt: {
@@ -75,16 +76,16 @@ export default StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: 'normal',
     textAlign: 'center',
-    color: '#202124',
+    color: colors.black,
   },
   confirm: {
     flex: 2,
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 8,
   },
   confirmTxt: {

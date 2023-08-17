@@ -1,15 +1,17 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
+import { Appearance } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { tokenApi } from '../global/services/config/';
 import { loginService, registerService, updateUserInformationService } from '../global/services';
-import { enumScreens } from '../global/constants/screens';
+import { enumScreens } from '../global/constants/variables/screens';
 
 export const ExchangeContext = createContext();
 
 export const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [theme, setTheme] = useState(Appearance.getColorScheme());
 
   const handleAuthControl = async () => {
     const token = await AsyncStorage.getItem('jwt');
@@ -65,8 +67,12 @@ export const Provider = ({ children }) => {
     return response;
   };
 
+  Appearance.addChangeListener(({ colorScheme }) => {
+    setTheme(colorScheme);
+  });
+
   return (
-    <ExchangeContext.Provider value={{ user, isAuthenticated, login, logout, register, handleAuthControl, updateUserInformation }}>
+    <ExchangeContext.Provider value={{ user, isAuthenticated, theme, login, logout, register, handleAuthControl, updateUserInformation }}>
       {children}
     </ExchangeContext.Provider>
   );

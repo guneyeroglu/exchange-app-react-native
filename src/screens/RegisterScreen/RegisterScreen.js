@@ -11,7 +11,7 @@ import { CustomTextInput } from '../../components/CustomTextInput';
 import { ExchangeContext } from '../../store';
 
 import { EyeOffIcon, EyeOnIcon, KeyIcon, MailIcon, UserIcon } from '../../global/constants/icons';
-import { enumScreens } from '../../global/constants/screens';
+import { enumScreens } from '../../global/constants/variables/screens';
 
 import styles from './RegisterScreen.style';
 

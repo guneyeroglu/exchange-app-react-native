@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 export default StyleSheet.create({
   container: {
@@ -20,13 +21,13 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     opacity: 0.45,
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
   },
   icon: {
     width: 48 + 16, // +16 like padding
     height: 48 + 16, // +16 like padding
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 44,
     justifyContent: 'center',
     alignItems: 'center',

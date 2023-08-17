@@ -1,7 +1,8 @@
 import React from 'react';
 import { Path, Svg } from 'react-native-svg';
+import { colors } from '../variables/colors';
 
-export const InfoIcon = ({ size, color = '#202124' }) => (
+export const InfoIcon = ({ size, color = colors.black }) => (
   <Svg width={size ?? '48'} height={size ?? '48'} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
     <Path
       d='M12 18.5C12.5523 18.5 13 18.0523 13 17.5V10.5C13 9.94772 12.5523 9.5 12 9.5C11.4477 9.5 11 9.94772 11 10.5V17.5C11 18.0523 11.4477 18.5 12 18.5Z'

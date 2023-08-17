@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { enumScreens } from '../../global/constants/screens';
+import { enumScreens } from '../../global/constants/variables/screens';
 
 import styles from './CurrencyBox.style';
 

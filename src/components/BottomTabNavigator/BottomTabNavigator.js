@@ -3,7 +3,8 @@ import React from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { CalculationIcon, ProfileIcon, HomeIcon, AboutIcon, SettingIcon } from '../../global/constants/icons';
-import { enumScreens } from '../../global/constants/screens';
+import { enumScreens } from '../../global/constants/variables/screens';
+import { colors } from '../../global/constants/variables/colors';
 
 import styles from './BottomTabNavigator.style';
 
@@ -20,9 +21,9 @@ export const BottomTabNavigator = () => {
   ];
 
   const currenctRoute = (routeName) => {
-    if (route.name === routeName) return { color: '#202124', size: 40 };
+    if (route.name === routeName) return { color: colors.black, size: 40 };
 
-    return { color: '#20212475', size: 32 };
+    return { color: colors.black_75, size: 32 };
   };
 
   const onPressToNavigate = (navigation) => {

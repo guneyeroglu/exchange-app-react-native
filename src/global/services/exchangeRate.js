@@ -1,5 +1,5 @@
 import { tokenApi } from './config';
-import { apiURL } from '../constants/urls';
+import { apiURL } from '../constants/variables/urls';
 
 export const getExchangeRate = async () => {
   try {

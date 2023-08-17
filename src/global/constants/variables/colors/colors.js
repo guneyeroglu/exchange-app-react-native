@@ -1,0 +1,15 @@
+export const colors = {
+  black: '#202124',
+  black_95: '#20212495',
+  black_75: '#20212475',
+  black_45: '#20212445',
+  white: '#eeeeee',
+  white_80: '#eeeeee80',
+  white_e0: '#e0e0e0',
+  success: '#388e3c',
+  error: '#d32f2f',
+  error_75: '#d32f2f75',
+  error_10: '#d32f2f10',
+  warning: '#ffa000',
+  info: '#1976d2',
+};

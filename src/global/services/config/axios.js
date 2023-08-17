@@ -1,7 +1,7 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { baseURL } from '../../constants/urls';
+import { baseURL } from '../../constants//variables/urls';
 
 export const tokenApi = axios.create({ baseURL });
 export const noTokenApi = axios.create({ baseURL });

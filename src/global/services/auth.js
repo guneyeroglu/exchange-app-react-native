@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { apiURL } from '../constants/urls';
+import { apiURL } from '../constants/variables/urls';
 import { noTokenApi, tokenApi } from './config';
 
 export const registerService = async (data) => {

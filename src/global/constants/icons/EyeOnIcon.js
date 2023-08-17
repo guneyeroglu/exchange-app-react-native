@@ -1,7 +1,8 @@
 import React from 'react';
 import { Path, Svg } from 'react-native-svg';
+import { colors } from '../variables/colors';
 
-export const EyeOnIcon = ({ size, color = '#202124' }) => (
+export const EyeOnIcon = ({ size, color = colors.black }) => (
   <Svg width={size ?? '48'} height={size ?? '48'} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
     <Path
       d='M9.75 12C9.75 10.7574 10.7574 9.75 12 9.75C13.2426 9.75 14.25 10.7574 14.25 12C14.25 13.2426 13.2426 14.25 12 14.25C10.7574 14.25 9.75 13.2426 9.75 12Z'

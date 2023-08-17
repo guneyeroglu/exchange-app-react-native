@@ -1,7 +1,8 @@
 import React from 'react';
 import { Path, Svg } from 'react-native-svg';
+import { colors } from '../variables/colors';
 
-export const MailIcon = ({ size, color = '#202124' }) => (
+export const MailIcon = ({ size, color = colors.black }) => (
   <Svg width={size ?? '48'} height={size ?? '48'} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
     <Path
       d='M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7'

@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
     borderRadius: 8,
     padding: 8,
     gap: 32,

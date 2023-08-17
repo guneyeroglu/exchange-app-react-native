@@ -2,11 +2,12 @@ import { View, Text } from 'react-native';
 import React from 'react';
 
 import { DolarIcon } from '../../global/constants/icons';
+import { colors } from '../../global/constants/variables/colors';
 
 import styles from './BigCurrencyBox.style';
 
 export const BigCurrencyBox = ({
-  icon = <DolarIcon size={72} color='#202124' stroke={'#eeeeee'} />,
+  icon = <DolarIcon size={72} color={colors.black} stroke={colors.white} />,
   symbol = 'USD',
   name = 'Amerikan Doları',
   sales = 16.7221,

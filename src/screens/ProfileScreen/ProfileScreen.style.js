@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 const { width } = Dimensions.get('window');
 
@@ -21,12 +22,12 @@ export default StyleSheet.create({
     padding: 8,
     backgroundColor: '#e0e0e0',
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 8,
   },
   editTxt: {
     fontSize: 14,
-    color: '#202124',
+    color: colors.black,
     fontStyle: 'normal',
     fontWeight: 'normal',
   },
@@ -53,13 +54,13 @@ export default StyleSheet.create({
   },
   imageContainer: {
     borderBottomWidth: 1,
-    borderBottomColor: '#202124',
+    borderBottomColor: colors.black,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 16,
   },
   image: {
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
     padding: 16,
     width: 150,
     height: 150,
@@ -82,13 +83,13 @@ export default StyleSheet.create({
     marginBottom: 16,
   },
   title: {
-    color: '#202124',
+    color: colors.black,
     fontSize: 24,
     fontWeight: 'normal',
     fontStyle: 'normal',
   },
   subtitle: {
-    color: '#202124',
+    color: colors.black,
     fontSize: 14,
     fontWeight: 'normal',
     fontStyle: 'normal',
@@ -130,7 +131,7 @@ export default StyleSheet.create({
   },
   genderButton: {
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     width: width / 3 - 16,
     height: 40,
     borderRadius: 8,

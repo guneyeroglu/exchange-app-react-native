@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 export default StyleSheet.create({
   container: {
@@ -25,7 +26,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 8,
   },
   buttons: {
@@ -41,17 +42,17 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#eeeeee',
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 8,
   },
   primary: {
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
   },
   text: {
     fontSize: 14,
     fontStyle: 'normal',
     fontWeight: 'normal',
-    color: '#202124',
+    color: colors.black,
   },
   primaryText: {
     color: '#eeeeee',

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 export default StyleSheet.create({
   inputContainer: {},
@@ -11,11 +12,11 @@ export default StyleSheet.create({
     width: '100%',
     borderWidth: 1,
     borderColor: 'transparent',
-    borderBottomColor: '#202124',
+    borderBottomColor: colors.black,
     paddingVertical: 8,
     paddingHorizontal: 8,
     fontSize: 14,
-    color: '#202124',
+    color: colors.black,
     fontWeight: 'normal',
     fontStyle: 'normal',
   },

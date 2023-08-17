@@ -1,7 +1,8 @@
 import React from 'react';
 import { Path, Svg } from 'react-native-svg';
+import { colors } from '../variables/colors';
 
-export const SterlinIcon = ({ size, color = '#202124', stroke }) => (
+export const SterlinIcon = ({ size, color = colors.black, stroke }) => (
   <Svg width={size ?? '48'} height={size ?? '48'} viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'>
     <Path
       stroke={stroke ?? color}

@@ -1,10 +1,11 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 const { width } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
     width: width * 0.5 - 24, // 24 = 16 + 8
     minHeight: 150,
     borderRadius: 8,

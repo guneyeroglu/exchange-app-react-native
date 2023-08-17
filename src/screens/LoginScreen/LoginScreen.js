@@ -9,7 +9,7 @@ import { Layout } from '../../components/Layout';
 import { CustomTextInput } from '../../components/CustomTextInput';
 
 import { EyeOffIcon, EyeOnIcon, KeyIcon, MailIcon } from '../../global/constants/icons';
-import { enumScreens } from '../../global/constants/screens';
+import { enumScreens } from '../../global/constants/variables/screens';
 import { ExchangeContext } from '../../store/';
 
 import styles from './LoginScreen.style';

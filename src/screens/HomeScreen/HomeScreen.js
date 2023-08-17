@@ -8,6 +8,7 @@ import { CurrencyBox } from '../../components/CurrencyBox';
 import { Loading } from '../../components/Loading';
 
 import { DolarIcon, EuroIcon } from '../../global/constants/icons';
+import { colors } from '../../global/constants/variables/colors';
 import { getExchangeRate } from '../../global/services/';
 import { moneyFormat } from '../../global/utils';
 
@@ -18,8 +19,8 @@ export const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const currencyIcon = {
-    USD: <DolarIcon size={72} color='#202124' stroke={'#eeeeee'} />,
-    EUR: <EuroIcon size={72} color='#202124' stroke={'#eeeeee'} />,
+    USD: <DolarIcon size={72} color={colors.black} stroke={colors.white} />,
+    EUR: <EuroIcon size={72} color={colors.black} stroke={colors.white} />,
   };
 
   const getAllData = async () => {
@@ -61,8 +62,8 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.containerParite}>
               <PariteBox
-                firstCurrency={{ ...data[0], icon: <DolarIcon size={36} color='#eeeeee80' stroke={'#202124'} /> }}
-                secondCurrency={{ ...data[1], icon: <EuroIcon size={36} color='#eeeeee' stroke={'#202124'} /> }}
+                firstCurrency={{ ...data[0], icon: <DolarIcon size={36} color='#eeeeee80' stroke={colors.black} /> }}
+                secondCurrency={{ ...data[1], icon: <EuroIcon size={36} color='#eeeeee' stroke={colors.black} /> }}
               />
             </View>
             <FlatList

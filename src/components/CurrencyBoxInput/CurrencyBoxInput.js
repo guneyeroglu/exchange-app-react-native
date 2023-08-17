@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-import { enumScreens } from '../../global/constants/screens';
+import { enumScreens } from '../../global/constants/variables/screens';
 import { moneyFormat } from '../../global/utils';
 
 import styles from './CurrencyBoxInput.style';

@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 const { height } = Dimensions.get('window');
 
@@ -19,7 +20,7 @@ export default StyleSheet.create({
     padding: 16,
   },
   title: {
-    color: '#202124',
+    color: colors.black,
     fontSize: 24,
     fontWeight: 'bold',
     fontStyle: 'normal',
@@ -30,7 +31,7 @@ export default StyleSheet.create({
   },
   button: {
     marginVertical: 16,
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
     width: 200,
     borderRadius: 8,
     alignSelf: 'center',
@@ -51,13 +52,13 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   footerText: {
-    color: '#202124',
+    color: colors.black,
     fontSize: 16,
     fontWeight: 'normal',
     fontStyle: 'normal',
   },
   footerLink: {
-    color: '#202124',
+    color: colors.black,
     fontSize: 16,
     fontWeight: 'bold',
     fontStyle: 'normal',

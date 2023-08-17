@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 export default StyleSheet.create({
   container: {
@@ -9,14 +10,14 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#202124',
+    borderBottomColor: colors.black,
   },
   image: {
     width: 48,
     height: 48,
     marginRight: 16,
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 44,
     resizeMode: 'cover',
   },

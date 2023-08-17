@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 const { width } = Dimensions.get('window');
 export default StyleSheet.create({
@@ -8,7 +9,7 @@ export default StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     marginBottom: 10,
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,

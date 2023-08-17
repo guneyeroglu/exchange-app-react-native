@@ -9,11 +9,11 @@ import { ExchangeContext } from '../store';
 
 import { CustomToast } from '../components/CustomToast';
 
-import { enumScreens } from '../global/constants/screens';
+import { enumScreens } from '../global/constants/variables/screens';
 
 export const Root = () => {
   const Tab = createBottomTabNavigator();
-  const { isAuthenticated, handleAuthControl } = useContext(ExchangeContext);
+  const { isAuthenticated, handleAuthControl, theme } = useContext(ExchangeContext);
 
   useEffect(() => {
     handleAuthControl();

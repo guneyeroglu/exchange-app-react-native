@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 const { width } = Dimensions.get('window');
 
@@ -15,14 +16,14 @@ export default StyleSheet.create({
     paddingBottom: 8,
     paddingHorizontal: 16 + 4,
     borderBottomWidth: 1,
-    borderBottomColor: '#202124',
+    borderBottomColor: colors.black,
   },
   localIcon: {
     width: 32,
     height: 32,
     marginRight: 16,
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 44,
     justifyContent: 'center',
     alignItems: 'center',
@@ -37,13 +38,13 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     fontStyle: 'normal',
-    color: '#202124',
+    color: colors.black,
   },
   localTypeSubtitle: {
     fontSize: 16,
     fontWeight: 'normal',
     fontStyle: 'italic',
-    color: '#202124',
+    color: colors.black,
   },
   localInfoContainer: {
     width: width / 4,
@@ -60,13 +61,13 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     fontStyle: 'normal',
-    color: '#202124',
+    color: colors.black,
   },
   localInfoMoney: {
     fontSize: 12,
     fontWeight: 'normal',
     fontStyle: 'italic',
-    color: '#202124',
+    color: colors.black,
   },
   currencyContainer: {
     paddingHorizontal: 16,

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../global/constants/variables/colors';
 
 export default StyleSheet.create({
   container: {
@@ -10,20 +11,20 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#202124',
+    borderBottomColor: colors.black,
     padding: 16,
   },
   title: {
     fontSize: 20,
     fontWeight: 'normal',
     fontStyle: 'normal',
-    color: '#202124',
+    color: colors.black,
   },
   headerIcon: {
     width: 36,
     height: 36,
     borderWidth: 1,
-    borderColor: '#202124',
+    borderColor: colors.black,
     borderRadius: 44,
     resizeMode: 'cover',
   },
@@ -34,7 +35,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#202124',
+    backgroundColor: colors.black,
     padding: 8,
     borderRadius: 8,
     marginBottom: 4,
@@ -50,18 +51,18 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 8,
-    backgroundColor: '#20212445',
+    backgroundColor: colors.black_45,
     borderRadius: 8,
     marginBottom: 4,
   },
   tableSecondRow: {
-    backgroundColor: '#20212475',
+    backgroundColor: colors.black_75,
   },
   tableRowTxt: {
     fontSize: 12,
     fontWeight: 'normal',
     fontStyle: 'normal',
-    color: '#202124',
+    color: colors.black,
     flex: 1,
   },
   firstTxt: {
