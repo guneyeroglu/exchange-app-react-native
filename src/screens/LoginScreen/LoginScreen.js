@@ -10,6 +10,8 @@ import { CustomTextInput } from '../../components/CustomTextInput';
 
 import { EyeOffIcon, EyeOnIcon, KeyIcon, MailIcon } from '../../global/constants/icons';
 import { enumScreens } from '../../global/constants/variables/screens';
+import { colors } from '../../global/constants/variables/colors';
+
 import { ExchangeContext } from '../../store/';
 
 import styles from './LoginScreen.style';
@@ -58,10 +60,10 @@ export const LoginScreen = () => {
       <ScrollView style={styles.content}>
         <Text style={styles.title}>Giriş</Text>
         <CustomTextInput
-          leftIcon={<MailIcon size={20} color={formik.touched.email && formik.errors.email && '#d32f2f'} />}
+          leftIcon={<MailIcon size={20} color={formik.touched.email && formik.errors.email && colors.error} />}
           autoCapitalize='none'
           placeholder='e-posta'
-          placeholderTextColor={formik.touched.email && formik.errors.email ? '#d32f2f75' : '#20212475'}
+          placeholderTextColor={formik.touched.email && formik.errors.email ? colors.error_75 : colors.black_75}
           name='email'
           value={formik.values.email}
           onChangeText={(e) => handleInitialValues('email', e)}
@@ -69,7 +71,7 @@ export const LoginScreen = () => {
           error={formik.touched.email && formik.errors.email}
         />
         <CustomTextInput
-          leftIcon={<KeyIcon size={20} color={formik.touched.password && formik.errors.password && '#d32f2f'} />}
+          leftIcon={<KeyIcon size={20} color={formik.touched.password && formik.errors.password && colors.error} />}
           rightIcon={
             <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenPassword}>
               {isHidden ? <EyeOffIcon size={20} /> : <EyeOnIcon size={20} />}
@@ -78,7 +80,7 @@ export const LoginScreen = () => {
           secureTextEntry={isHidden}
           autoCapitalize='none'
           placeholder='şifre'
-          placeholderTextColor={formik.touched.password && formik.errors.password ? '#d32f2f75' : '#20212475'}
+          placeholderTextColor={formik.touched.password && formik.errors.password ? colors.error_75 : colors.black_75}
           name='password'
           value={formik.values.password}
           onChangeText={(e) => handleInitialValues('password', e)}

@@ -8,10 +8,11 @@ import * as Yup from 'yup';
 import { Layout } from '../../components/Layout';
 import { CustomTextInput } from '../../components/CustomTextInput';
 
-import { ExchangeContext } from '../../store';
-
 import { EyeOffIcon, EyeOnIcon, KeyIcon, MailIcon, UserIcon } from '../../global/constants/icons';
 import { enumScreens } from '../../global/constants/variables/screens';
+import { colors } from '../../global/constants/variables/colors';
+
+import { ExchangeContext } from '../../store';
 
 import styles from './RegisterScreen.style';
 
@@ -67,10 +68,10 @@ export const RegisterScreen = () => {
       <ScrollView style={styles.content}>
         <Text style={styles.title}>Üye Ol</Text>
         <CustomTextInput
-          leftIcon={<UserIcon size={20} color={formik.touched.username && formik.errors.username && '#d32f2f'} />}
+          leftIcon={<UserIcon size={20} color={formik.touched.username && formik.errors.username && colors.error} />}
           autoCapitalize='none'
           placeholder='kullanıcı adı'
-          placeholderTextColor={formik.touched.username && formik.errors.username ? '#d32f2f75' : '#20212475'}
+          placeholderTextColor={formik.touched.username && formik.errors.username ? colors.error_75 : colors.black_75}
           name='username'
           value={formik.values.username}
           onChangeText={(e) => handleInitialValues('username', e)}
@@ -78,10 +79,10 @@ export const RegisterScreen = () => {
           error={formik.touched.username && formik.errors.username}
         />
         <CustomTextInput
-          leftIcon={<MailIcon size={20} color={formik.touched.email && formik.errors.email && '#d32f2f'} />}
+          leftIcon={<MailIcon size={20} color={formik.touched.email && formik.errors.email && colors.error} />}
           autoCapitalize='none'
           placeholder='e-posta'
-          placeholderTextColor={formik.touched.email && formik.errors.email ? '#d32f2f75' : '#20212475'}
+          placeholderTextColor={formik.touched.email && formik.errors.email ? colors.error_75 : colors.black_75}
           name='email'
           value={formik.values.email}
           onChangeText={(e) => handleInitialValues('email', e)}
@@ -89,7 +90,7 @@ export const RegisterScreen = () => {
           error={formik.touched.email && formik.errors.email}
         />
         <CustomTextInput
-          leftIcon={<KeyIcon size={20} color={formik.touched.password && formik.errors.password && '#d32f2f'} />}
+          leftIcon={<KeyIcon size={20} color={formik.touched.password && formik.errors.password && colors.error} />}
           rightIcon={
             <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenPassword}>
               {isHidden ? <EyeOffIcon size={20} /> : <EyeOnIcon size={20} />}
@@ -98,7 +99,7 @@ export const RegisterScreen = () => {
           secureTextEntry={isHidden}
           autoCapitalize='none'
           placeholder='şifre'
-          placeholderTextColor={formik.touched.password && formik.errors.password ? '#d32f2f75' : '#20212475'}
+          placeholderTextColor={formik.touched.password && formik.errors.password ? colors.error_75 : colors.black_75}
           name='password'
           value={formik.values.password}
           onChangeText={(e) => handleInitialValues('password', e)}
@@ -106,7 +107,7 @@ export const RegisterScreen = () => {
           error={formik.touched.password && formik.errors.password}
         />
         <CustomTextInput
-          leftIcon={<KeyIcon size={20} color={formik.touched.confirmPassword && formik.errors.confirmPassword && '#d32f2f'} />}
+          leftIcon={<KeyIcon size={20} color={formik.touched.confirmPassword && formik.errors.confirmPassword && colors.error} />}
           rightIcon={
             <TouchableOpacity style={styles.rightIcon} onPress={onPressHiddenConfirmPassword}>
               {isHiddenConfirm ? <EyeOffIcon size={20} /> : <EyeOnIcon size={20} />}
@@ -115,7 +116,7 @@ export const RegisterScreen = () => {
           secureTextEntry={isHiddenConfirm}
           autoCapitalize='none'
           placeholder='şifre tekrarı'
-          placeholderTextColor={formik.touched.confirmPassword && formik.errors.confirmPassword ? '#d32f2f75' : '#20212475'}
+          placeholderTextColor={formik.touched.confirmPassword && formik.errors.confirmPassword ? colors.error_75 : colors.black_75}
           name='confirmPassword'
           value={formik.values.confirmPassword}
           onChangeText={(e) => handleInitialValues('confirmPassword', e)}

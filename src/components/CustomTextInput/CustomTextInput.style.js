@@ -22,10 +22,10 @@ export default StyleSheet.create({
   },
   disabled: {
     borderWidth: 1,
-    borderColor: '#e0e0e0',
-    borderBottomColor: '#e0e0e0',
+    borderColor: colors.white_e0,
+    borderBottomColor: colors.white_e0,
     borderRadius: 8,
-    backgroundColor: '#e0e0e0',
+    backgroundColor: colors.white_e0,
   },
   leftPadding: {
     paddingLeft: 34,
@@ -46,8 +46,8 @@ export default StyleSheet.create({
     zIndex: 1,
   },
   errorBorder: {
-    borderBottomColor: '#d32f2f',
-    color: '#d32f2f',
+    borderBottomColor: colors.error,
+    color: colors.error,
   },
   messageContainer: {
     flex: 1,
@@ -61,14 +61,14 @@ export default StyleSheet.create({
     paddingRight: 20,
   },
   info: {
-    color: '#2979ff',
+    color: colors.info,
     fontSize: 12,
     lineHeight: 12,
     fontWeight: 'normal',
     fontStyle: 'normal',
   },
   error: {
-    color: '#d32f2f',
+    color: colors.error,
     fontSize: 12,
     lineHeight: 12,
     fontWeight: 'normal',

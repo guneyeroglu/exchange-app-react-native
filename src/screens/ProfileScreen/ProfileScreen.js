@@ -162,22 +162,33 @@ export const ProfileScreen = () => {
               key={username}
               name='username'
               autoCapitalize='none'
-              leftIcon={<UserIcon size={20} color={formik.touched.username && formik.errors.username && '#d32f2f'} />}
+              placeholder='kullanıcı adı'
+              placeholderTextColor={formik.touched.username && formik.errors.username ? colors.error_75 : colors.black_75}
+              leftIcon={<UserIcon size={20} color={formik.touched.username && formik.errors.username && colors.error} />}
               value={formik.values.username}
               onChangeText={(e) => handleValueChange('username', e)}
               editable={editable}
               error={formik.touched.username && formik.errors.username}
             />
-            <CustomTextInput name='email' leftIcon={<MailIcon size={20} />} value={email} editable={false} />
+            <CustomTextInput
+              name='email'
+              autoCapitalize='none'
+              leftIcon={<MailIcon size={20} />}
+              value={email}
+              editable={false}
+              info={editable ? 'Mail adresi değiştirilemez.' : null}
+            />
             {!datePickerVisibility && (
               <CustomTextInput
                 name='birthday'
                 autoCapitalize='none'
-                leftIcon={<BirthdayIcon size={20} color={formik.touched.birthday && formik.errors.birthday && '#d32f2f'} />}
+                placeholder='doğum günü'
+                placeholderTextColor={formik.touched.birthday && formik.errors.birthday ? colors.error_75 : colors.black_75}
+                leftIcon={<BirthdayIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />}
                 rightIcon={
                   editable ? (
                     <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
-                      <CalendarIcon size={20} color={formik.touched.birthday && formik.errors.birthday && '#d32f2f'} />
+                      <CalendarIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />
                     </TouchableOpacity>
                   ) : null
                 }
@@ -191,6 +202,8 @@ export const ProfileScreen = () => {
               <CustomTextInput
                 name='gender'
                 autoCapitalize='none'
+                placeholder='cinsiyet'
+                placeholderTextColor={formik.touched.gender && formik.errors.gender ? colors.error_75 : colors.black_75}
                 leftIcon={<GenderIcon size={20} />}
                 value={enumGender[formik.values.gender]}
                 editable={false}
@@ -221,6 +234,8 @@ export const ProfileScreen = () => {
               mask={'0999 999 9999'}
               name='phone'
               autoCapitalize='none'
+              placeholder='telefon numarası'
+              placeholderTextColor={formik.touched.phone && formik.errors.phone ? colors.error_75 : colors.black_75}
               leftIcon={<PhoneIcon size={20} />}
               value={formik.values.phone}
               onChangeText={(e) => handleValueChange('phone', e)}
@@ -231,6 +246,8 @@ export const ProfileScreen = () => {
             <CustomTextInput
               name='university'
               autoCapitalize='none'
+              placeholder='üniversite'
+              placeholderTextColor={formik.touched.university && formik.errors.university ? colors.error_75 : colors.black_75}
               leftIcon={<UniversityIcon size={20} />}
               value={formik.values.university}
               onChangeText={(e) => handleValueChange('university', e)}
@@ -248,7 +265,7 @@ export const ProfileScreen = () => {
         </ScrollView>
         <View style={styles.footer}>
           <TouchableOpacity style={styles.exit} onPress={() => setLogoutModal(true)}>
-            <LogoutIcon size={24} color='#d32f2f' />
+            <LogoutIcon size={24} color={colors.error} />
             <Text style={styles.exitTxt}>Çıkış</Text>
           </TouchableOpacity>
         </View>

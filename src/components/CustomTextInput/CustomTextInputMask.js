@@ -2,6 +2,7 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import { MaskedTextInput } from 'react-native-mask-text';
 
+import { colors } from '../../global/constants/variables/colors';
 import { ErrorIcon, InfoIcon } from '../../global/constants/icons';
 
 import styles from './CustomTextInput.style.js';
@@ -41,13 +42,13 @@ export const CustomTextInputMask = ({
         {rightIcon && <View style={styles.rightIcon}>{rightIcon}</View>}
         {info && (
           <View style={styles.messageContainer}>
-            <InfoIcon size={12} color='#2979ff' />
+            <InfoIcon size={12} color={colors.info} />
             <Text style={styles.info}>{info}</Text>
           </View>
         )}
         {error && (
           <View style={styles.messageContainer}>
-            <ErrorIcon size={12} color='#d32f2f' />
+            <ErrorIcon size={12} color={colors.error} />
             <Text style={styles.error}>{error}</Text>
           </View>
         )}

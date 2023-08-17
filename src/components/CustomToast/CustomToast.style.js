@@ -22,15 +22,15 @@ export default StyleSheet.create({
     fontWeight: 'normal',
   },
   success: {
-    backgroundColor: '#388e3c',
+    backgroundColor: colors.success,
   },
   error: {
-    backgroundColor: '#d32f2f',
+    backgroundColor: colors.error,
   },
   warning: {
-    backgroundColor: '#ffa000',
+    backgroundColor: colors.warning,
   },
   info: {
-    backgroundColor: '#1976d2',
+    backgroundColor: colors.info,
   },
 });
