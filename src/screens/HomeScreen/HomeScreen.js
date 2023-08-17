@@ -62,8 +62,8 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.containerParite}>
               <PariteBox
-                firstCurrency={{ ...data[0], icon: <DolarIcon size={36} color='#eeeeee80' stroke={colors.black} /> }}
-                secondCurrency={{ ...data[1], icon: <EuroIcon size={36} color='#eeeeee' stroke={colors.black} /> }}
+                firstCurrency={{ ...data[0], icon: <DolarIcon size={36} color={colors.white_80} stroke={colors.black} /> }}
+                secondCurrency={{ ...data[1], icon: <EuroIcon size={36} color={colors.white} stroke={colors.black} /> }}
               />
             </View>
             <FlatList

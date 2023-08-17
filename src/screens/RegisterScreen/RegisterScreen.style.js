@@ -9,7 +9,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     paddingHorizontal: 0,
     paddingTop: height / 10,
-    backgroundColor: '#eeeeee',
+    backgroundColor: colors.white,
   },
   mainLogo: {
     width: '100%',
@@ -41,7 +41,7 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
   },
   buttonText: {
-    color: '#eeeeee',
+    color: colors.white,
     fontSize: 16,
     fontWeight: 'normal',
     fontStyle: 'normal',

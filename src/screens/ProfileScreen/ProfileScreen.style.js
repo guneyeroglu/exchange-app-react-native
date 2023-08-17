@@ -37,15 +37,15 @@ export default StyleSheet.create({
     gap: 16,
   },
   cancel: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: colors.white,
   },
   save: {
-    backgroundColor: '#202421',
-    color: '#eeeeee',
+    backgroundColor: colors.black,
+    color: colors.white,
   },
   saveTxt: {
     fontSize: 14,
-    color: '#eeeeee',
+    color: colors.white,
     fontStyle: 'normal',
     fontWeight: 'normal',
   },
@@ -70,7 +70,7 @@ export default StyleSheet.create({
     marginBottom: 16,
   },
   imageTxt: {
-    color: '#eeeeee',
+    color: colors.white,
     fontSize: 40,
     fontWeight: 'normal',
     fontStyle: 'normal',

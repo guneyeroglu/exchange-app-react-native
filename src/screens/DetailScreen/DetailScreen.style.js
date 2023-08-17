@@ -44,7 +44,7 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     fontStyle: 'normal',
-    color: '#eeeeee',
+    color: colors.white,
   },
   tableRow: {
     flexDirection: 'row',

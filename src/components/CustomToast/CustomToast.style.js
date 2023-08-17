@@ -16,7 +16,7 @@ export default StyleSheet.create({
   },
   containerText: {
     fontSize: 14,
-    color: '#eeeeee',
+    color: colors.white,
     textAlign: 'center',
     fontStyle: 'normal',
     fontWeight: 'normal',

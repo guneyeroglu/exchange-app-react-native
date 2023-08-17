@@ -21,7 +21,7 @@ export default StyleSheet.create({
     backgroundColor: 'transparent',
   },
   containerContent: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: colors.black,
     minWidth: (width * 2) / 3,
@@ -66,7 +66,7 @@ export default StyleSheet.create({
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#eeeeee',
+    backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: colors.black,
     borderRadius: 8,
@@ -93,6 +93,6 @@ export default StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: 'normal',
     textAlign: 'center',
-    color: '#eeeeee',
+    color: colors.white,
   },
 });

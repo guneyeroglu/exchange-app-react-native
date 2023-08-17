@@ -19,14 +19,14 @@ export default StyleSheet.create({
     left: 10,
   },
   title: {
-    color: '#eeeeee',
+    color: colors.white,
     fontSize: 16,
     fontWeight: 'bold',
     fontStyle: 'normal',
   },
   subtitle: {
     fontSize: 14,
-    color: '#eeeeee',
+    color: colors.white,
     fontWeight: 'normal',
     fontStyle: 'normal',
     marginTop: 8,

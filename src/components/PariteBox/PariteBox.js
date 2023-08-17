@@ -9,14 +9,14 @@ import styles from './PariteBox.style';
 
 export const PariteBox = ({
   firstCurrency = {
-    icon: <DolarIcon size={36} color='#eeeeee80' stroke={colors.black} />,
+    icon: <DolarIcon size={36} color={colors.white_80} stroke={colors.black} />,
     title: 'USD',
     subtitle: 'Amerikan Doları',
     buying: 24.5321,
     sales: 24.7321,
   },
   secondCurrency = {
-    icon: <EuroIcon size={36} color='#eeeeee' stroke={colors.black} />,
+    icon: <EuroIcon size={36} color={colors.white} stroke={colors.black} />,
     title: 'EUR',
     subtitle: 'Euro',
     buying: 27.7321,

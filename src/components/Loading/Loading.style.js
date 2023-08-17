@@ -31,6 +31,6 @@ export default StyleSheet.create({
     borderRadius: 44,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#eeeeee',
+    backgroundColor: colors.white,
   },
 });

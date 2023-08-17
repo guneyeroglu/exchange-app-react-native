@@ -11,8 +11,7 @@ import { CustomTextInput, CustomTextInputMask } from '../../components/CustomTex
 import { CustomDatePicker } from '../../components/CustomDatePicker';
 import { Modal } from '../../components/Modal';
 
-import { ExchangeContext } from '../../store';
-
+import { colors } from '../../global/constants/variables/colors';
 import {
   CancelIcon,
   EditIcon,
@@ -27,6 +26,8 @@ import {
   GenderIcon,
   CalendarIcon,
 } from '../../global/constants/icons';
+
+import { ExchangeContext } from '../../store';
 
 import styles from './ProfileScreen.style';
 
@@ -139,7 +140,7 @@ export const ProfileScreen = () => {
               <Text style={styles.editTxt}>Vazgeç</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.edit, styles.save]} onPress={formik.handleSubmit}>
-              <SaveIcon size={24} color='#eeeeee' />
+              <SaveIcon size={24} color={colors.white} />
               <Text style={styles.saveTxt}>Kaydet</Text>
             </TouchableOpacity>
           </View>

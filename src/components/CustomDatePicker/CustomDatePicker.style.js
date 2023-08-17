@@ -4,7 +4,7 @@ import { colors } from '../../global/constants/variables/colors';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eeeeee',
+    backgroundColor: colors.white,
     position: 'absolute',
     top: 0,
     left: 0,
@@ -40,7 +40,7 @@ export default StyleSheet.create({
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#eeeeee',
+    backgroundColor: colors.white,
     borderWidth: 1,
     borderColor: colors.black,
     borderRadius: 8,
@@ -55,6 +55,6 @@ export default StyleSheet.create({
     color: colors.black,
   },
   primaryText: {
-    color: '#eeeeee',
+    color: colors.white,
   },
 });

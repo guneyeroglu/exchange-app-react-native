@@ -21,12 +21,12 @@ export default StyleSheet.create({
   containerTitle: {
     fontSize: 24,
     textAlign: 'center',
-    color: '#eeeeee',
+    color: colors.white,
   },
   containerSubtitle: {
     fontSize: 16,
     textAlign: 'center',
-    color: '#eeeeee',
+    color: colors.white,
     marginTop: 12,
   },
   moneyContainer: {
@@ -37,6 +37,6 @@ export default StyleSheet.create({
   },
   border: {
     borderBottomWidth: 1,
-    borderBottomColor: '#eeeeee',
+    borderBottomColor: colors.white,
   },
 });
