@@ -1,6 +1,7 @@
 import { Text, Image, TouchableOpacity, ScrollView, View } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useToast } from 'react-native-toast-notifications';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -19,6 +20,7 @@ export const RegisterScreen = () => {
   const { navigate } = useNavigation();
   const [isHidden, setisHidden] = useState(true);
   const [isHiddenConfirm, setisHiddenConfirm] = useState(true);
+  const toast = useToast();
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('Lütfen kullanıcı adınızı giriniz.'),
@@ -33,7 +35,13 @@ export const RegisterScreen = () => {
     initialValues: { username: '', email: '', password: '', confirmPassword: '' },
     validationSchema,
     onSubmit: async (values) => {
-      await register(values, navigate);
+      const response = await register(values, navigate);
+
+      if (response.status) {
+        toast.show('Kaydolma işlemi başarılı.');
+      } else {
+        toast.show('Kaydolma işlemi başarısız.');
+      }
     },
   });
 

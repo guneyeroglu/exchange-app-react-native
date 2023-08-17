@@ -1,6 +1,7 @@
 import { View, Text, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useToast } from 'react-native-toast-notifications';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -17,6 +18,7 @@ export const LoginScreen = () => {
   const { login } = useContext(ExchangeContext);
   const { navigate } = useNavigation();
   const [isHidden, setisHidden] = useState(true);
+  const toast = useToast();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Lütfen geçerli bir e-posta adresi giriniz.').required('Lütfen e-posta adresinizi giriniz.'),
@@ -27,7 +29,14 @@ export const LoginScreen = () => {
     initialValues: { email: '', password: '' },
     validationSchema,
     onSubmit: async (values) => {
-      await login({ identifier: values.email, password: values.password }, navigate);
+      const response = await login({ identifier: values.email, password: values.password }, navigate);
+
+      if (response.status) {
+        toast.show('Giriş başarılı.');
+      } else {
+        toast.show('Giriş başarısız.');
+        toast.show('Lütfen kullanıcı adı ve şifrenizi kontrol edin.');
+      }
     },
   });
 

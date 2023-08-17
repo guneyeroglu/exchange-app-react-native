@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useToast } from 'react-native-toast-notifications';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import moment from 'moment';
@@ -36,11 +37,12 @@ export const ProfileScreen = () => {
   const [editable, setEditable] = useState(false);
   const [saveModal, setSaveModal] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
+  const toast = useToast();
 
   const id = user && user.id ? user.id : '';
   const username = user && user.username ? user.username : '';
   const email = user && user.email ? user.email : '';
-  const birthday = user && user.birthday ? user.birthday : '';
+  const birthday = user && user.birthday ? user.birthday : new Date();
   const createdAt = user && user.createdAt ? moment(user.createdAt).format('DD.MM.YYYY') : '';
   const updatedAt = user && user.updatedAt ? moment(user.updatedAt).format('DD.MM.YYYY') : '';
   const gender = user && user.gender ? user.gender : '3';
@@ -95,15 +97,24 @@ export const ProfileScreen = () => {
   };
 
   const handleSave = async () => {
-    await updateUserInformation(formik.values, id);
+    const response = await updateUserInformation(formik.values, id);
 
-    setEditable(false);
     setDatePickerVisibility(false);
     setSaveModal(false);
+
+    if (response.status) {
+      toast.show(`Profil bilgileriniz güncellendi.`);
+      toast.show(`Son güncellenme tarihi: ${updatedAt}`);
+      setEditable(false);
+    } else {
+      toast.show('Profil bilgileriniz güncellenirken bir hata oluştu.');
+    }
   };
 
   const onPressToLogout = () => {
     logout(navigate);
+    setLogoutModal(false);
+    toast.show('Başarıyla çıkış yapıldı.');
   };
 
   const onChangeDatePicker = (event) => {
