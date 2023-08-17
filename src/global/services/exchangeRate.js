@@ -8,7 +8,6 @@ export const getExchangeRate = async () => {
     return { data: response.data, status: true };
   } catch (error) {
     console.error('get is not working!', error);
-
     return { data: [], status: false };
   }
 };

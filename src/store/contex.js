@@ -31,7 +31,7 @@ export const Provider = ({ children }) => {
       navigate(enumScreens.HOME_SCREEN);
     }
 
-    return { data: response.data, status: true };
+    return response;
   };
 
   const login = async (data, navigate) => {
@@ -42,6 +42,8 @@ export const Provider = ({ children }) => {
       setIsAuthenticated(true);
       navigate(enumScreens.HOME_SCREEN);
     }
+
+    return response;
   };
 
   const logout = async (navigate) => {
@@ -59,6 +61,8 @@ export const Provider = ({ children }) => {
     if (response.status) {
       setUser(response.data);
     }
+
+    return response;
   };
 
   return (

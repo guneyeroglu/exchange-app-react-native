@@ -17,10 +17,8 @@ export const registerService = async (data) => {
       return { data: response.data, status: true };
     }
   } catch (error) {
-    console.error('Kaydolma işlemi başarısız!', error);
+    return { data: [], status: false };
   }
-
-  return { data: [], status: false };
 };
 
 export const loginService = async (data) => {
@@ -37,7 +35,6 @@ export const loginService = async (data) => {
       return { data: response.data, status: true };
     }
   } catch (error) {
-    console.error('Giriş yapma işlemi başarısız!', error);
     return { data: [], status: false, message: error };
   }
 };
@@ -50,8 +47,6 @@ export const updateUserInformationService = async (data = {}, id) => {
 
     return { data: response.data, status: true };
   } catch (error) {
-    console.error('Güncelleme işlemi başarısız!', error);
-
     return { data: [], status: false, message: error };
   }
 };
