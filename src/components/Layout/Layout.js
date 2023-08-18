@@ -12,7 +12,7 @@ export const Layout = ({ children, bottomTabNavigator = true, style = {} }) => {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom, ...style }]}>
-      <StatusBar style='auto' />
+      <StatusBar style='dark' />
       {children}
       {bottomTabNavigator && <BottomTabNavigator />}
     </View>
