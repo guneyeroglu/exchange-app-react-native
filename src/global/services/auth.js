@@ -11,8 +11,6 @@ export const registerService = async (data) => {
       const jwt = response.data.jwt;
 
       tokenApi.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
-      AsyncStorage.setItem('jwt', jwt);
-      AsyncStorage.setItem('user', JSON.stringify(response.data.user));
 
       return { data: response.data, status: true };
     }
@@ -29,8 +27,6 @@ export const loginService = async (data) => {
       const jwt = response.data.jwt;
 
       tokenApi.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
-      AsyncStorage.setItem('jwt', jwt);
-      AsyncStorage.setItem('user', JSON.stringify(response.data.user));
 
       return { data: response.data, status: true };
     }
@@ -42,8 +38,6 @@ export const loginService = async (data) => {
 export const updateUserInformationService = async (data = {}, id) => {
   try {
     const response = await tokenApi.put(`${apiURL.withToken.userInformation}${id}`, data);
-
-    AsyncStorage.setItem('user', JSON.stringify(response.data));
 
     return { data: response.data, status: true };
   } catch (error) {

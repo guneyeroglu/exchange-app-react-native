@@ -13,7 +13,7 @@ import { enumScreens } from '../global/constants/variables/screens';
 
 export const Root = () => {
   const Tab = createBottomTabNavigator();
-  const { isAuthenticated, handleAuthControl, theme } = useContext(ExchangeContext);
+  const { isAuthenticated, handleAuthControl } = useContext(ExchangeContext);
 
   useEffect(() => {
     handleAuthControl();
