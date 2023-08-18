@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from 'react';
+import { useState, createContext } from 'react';
 import { Appearance } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -11,23 +11,27 @@ export const ExchangeContext = createContext();
 export const Provider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [theme, setTheme] = useState(Appearance.getColorScheme());
+  const [theme, setTheme] = useState(Appearance.getColorScheme() || 'light');
 
   const handleAuthControl = async () => {
     const token = await AsyncStorage.getItem('jwt');
-    const user = await AsyncStorage.getItem('user');
+    const user = JSON.parse(await AsyncStorage.getItem('user'));
 
     if (token && user) {
       tokenApi.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      setUser(JSON.parse(user));
+      setUser(user);
       setIsAuthenticated(true);
     }
+
+    return { user, token };
   };
 
   const register = async (data, navigate) => {
     const response = await registerService(data);
 
     if (response.status) {
+      AsyncStorage.setItem('user', JSON.stringify(response.data.user));
+      AsyncStorage.setItem('jwt', response.data.jwt);
       setUser(response.data.user);
       setIsAuthenticated(true);
       navigate(enumScreens.HOME_SCREEN);
@@ -40,6 +44,8 @@ export const Provider = ({ children }) => {
     const response = await loginService(data);
 
     if (response.status) {
+      AsyncStorage.setItem('user', JSON.stringify(response.data.user));
+      AsyncStorage.setItem('jwt', response.data.jwt);
       setUser(response.data.user);
       setIsAuthenticated(true);
       navigate(enumScreens.HOME_SCREEN);
@@ -61,6 +67,7 @@ export const Provider = ({ children }) => {
     const response = await updateUserInformationService(data, id);
 
     if (response.status) {
+      AsyncStorage.setItem('user', JSON.stringify(response.data));
       setUser(response.data);
     }
 
@@ -72,7 +79,7 @@ export const Provider = ({ children }) => {
   });
 
   return (
-    <ExchangeContext.Provider value={{ user, isAuthenticated, theme, login, logout, register, handleAuthControl, updateUserInformation }}>
+    <ExchangeContext.Provider value={{ user, isAuthenticated, theme, setTheme, login, logout, register, handleAuthControl, updateUserInformation }}>
       {children}
     </ExchangeContext.Provider>
   );
