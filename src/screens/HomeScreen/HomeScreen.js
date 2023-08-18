@@ -1,4 +1,4 @@
-import { FlatList, View } from 'react-native';
+import { FlatList, View, RefreshControl } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { Layout } from '../../components/Layout';
@@ -17,6 +17,7 @@ import styles from './HomeScreen.style';
 export const HomeScreen = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   const currencyIcon = {
     USD: <DolarIcon size={72} color={colors.black} stroke={colors.white} />,
@@ -37,16 +38,22 @@ export const HomeScreen = () => {
       );
     }
     setIsLoading(false);
+    setRefreshing(false);
   };
 
   useEffect(() => {
     getAllData();
   }, []);
 
+  const onRefresh = () => {
+    setRefreshing(true);
+    getAllData();
+  };
+
   return (
     <>
       <Layout style={styles.layoutContainer}>
-        {!isLoading && (
+        {(!isLoading || refreshing) && (
           <View style={styles.container}>
             <View style={styles.containerHeader}>
               {[data[0], data[1]].map((item) => (
@@ -70,10 +77,11 @@ export const HomeScreen = () => {
               data={data}
               renderItem={({ item }) => <CurrencyBox {...{ ...item, iconUri: item.icon }} key={item.symbol} />}
               keyExtractor={(item) => item.symbol}
+              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
           </View>
         )}
-        {isLoading && <Loading />}
+        {isLoading && !refreshing && <Loading />}
       </Layout>
     </>
   );
