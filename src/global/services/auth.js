@@ -1,5 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { apiURL } from '../constants/variables/urls';
 import { noTokenApi, tokenApi } from './config';
 

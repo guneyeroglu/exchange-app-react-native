@@ -1,5 +1,6 @@
 import React from 'react';
 import { Path, Svg } from 'react-native-svg';
+
 import { colors } from '../variables/colors';
 
 export const UniversityIcon = ({ size, color = colors.black }) => (

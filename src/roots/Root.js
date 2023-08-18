@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ToastProvider } from 'react-native-toast-notifications';
 
-import { CalculationScreen, ProfileScreen, DetailScreen, HomeScreen, LoginScreen, PariteScreen, RegisterScreen, SettingsScreen } from '../screens';
+import { CalculationScreen, ProfileScreen, DetailScreen, HomeScreen, LoginScreen, RegisterScreen, SettingsScreen } from '../screens';
 
 import { ExchangeContext } from '../store';
 
@@ -35,7 +35,6 @@ export const Root = () => {
           )}
           <Tab.Screen name={enumScreens.HOME_SCREEN} component={HomeScreen} />
           <Tab.Screen name={enumScreens.DETAIL_SCREEN} component={DetailScreen} />
-          <Tab.Screen name={enumScreens.PARITE_SCREEN} component={PariteScreen} />
           <Tab.Screen name={enumScreens.CALCULATION_SCREEN} component={CalculationScreen} />
           <Tab.Screen name={enumScreens.PROFILE_SCREEN} component={ProfileScreen} />
           <Tab.Screen name={enumScreens.SETTINGS_SCREEN} component={SettingsScreen} />
