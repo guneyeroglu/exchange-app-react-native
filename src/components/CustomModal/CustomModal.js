@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 
-import styles from './Modal.style';
+import styles from './CustomModal.style';
 
-export const Modal = ({ open, title, subtitle, onCancelButton, onConfirmButton }) => {
+export const CustomModal = ({ open, title, subtitle, onCancelButton, onConfirmButton }) => {
   return (
     <>
       {open && (
