@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import React, { useContext, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useToast } from 'react-native-toast-notifications';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -9,11 +9,11 @@ import moment from 'moment';
 import { Layout } from '../../components/Layout';
 import { CustomTextInput, CustomTextInputMask } from '../../components/CustomTextInput';
 import { CustomDatePicker } from '../../components/CustomDatePicker';
-import { Modal } from '../../components/Modal';
+import { CustomModal } from '../../components/CustomModal';
 
 import { colors } from '../../global/constants/variables/colors';
 import {
-  CancelIcon,
+  CloseIcon,
   EditIcon,
   LogoutIcon,
   SaveIcon,
@@ -27,11 +27,14 @@ import {
   CalendarIcon,
 } from '../../global/constants/icons';
 
+import { useKeyboard } from '../../global/utils';
+
 import { ExchangeContext } from '../../store';
 
 import styles from './ProfileScreen.style';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export const ProfileScreen = () => {
+export const ProfileScreen = ({ route }) => {
   const { user, logout, updateUserInformation } = useContext(ExchangeContext);
   const { navigate } = useNavigation();
   const [datePickerVisibility, setDatePickerVisibility] = useState(false);
@@ -39,6 +42,9 @@ export const ProfileScreen = () => {
   const [saveModal, setSaveModal] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
   const toast = useToast();
+  const isFocus = useIsFocused();
+  const marginBottom = useKeyboard();
+  const insets = useSafeAreaInsets();
 
   const id = user && user.id ? user.id : '';
   const username = user && user.username ? user.username : '';
@@ -123,6 +129,14 @@ export const ProfileScreen = () => {
     setDatePickerVisibility(false);
   };
 
+  useEffect(() => {
+    if (route.params && route.params.editable && isFocus) {
+      setEditable(route.params.editable);
+    } else {
+      setEditable(false);
+    }
+  }, [route.params, route.params?.editable, isFocus]);
+
   return (
     <Layout style={styles.layoutContainer}>
       <View style={styles.header}>
@@ -136,7 +150,7 @@ export const ProfileScreen = () => {
         ) : (
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={[styles.edit, styles.cancel]} onPress={onPressToCancel}>
-              <CancelIcon size={24} />
+              <CloseIcon size={24} />
               <Text style={styles.editTxt}>Vazgeç</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.edit, styles.save]} onPress={formik.handleSubmit}>
@@ -156,8 +170,8 @@ export const ProfileScreen = () => {
             <Text style={styles.subtitle}>{createdAt}</Text>
           </View>
         </View>
-        <ScrollView>
-          <View style={styles.inputContainer}>
+        <ScrollView style={{ flex: 1, marginBottom: marginBottom ? marginBottom - insets.bottom - 40 - 100 + 16 : 0 }}>
+          <View style={[styles.inputContainer]}>
             <CustomTextInput
               key={username}
               name='username'
@@ -278,19 +292,19 @@ export const ProfileScreen = () => {
           onPressToSubmit={onChangeDatePicker}
         />
       )}
-      <Modal
+      <CustomModal
         open={saveModal}
         title={'Profil Bilgisini Güncelle'}
         subtitle={'Değişiklikleri kaydetmek istediğinizden emin misiniz?'}
         onCancelButton={{ text: 'İptal', onPress: () => setSaveModal(false) }}
         onConfirmButton={{ text: 'Kaydet', onPress: handleSave }}
       />
-      <Modal
+      <CustomModal
         open={logoutModal}
         title={'Çıkış Yap'}
         subtitle={'Çıkış yapmak istediğinizden emin misiniz?'}
         onCancelButton={{ text: 'İptal', onPress: () => setLogoutModal(false) }}
-        onConfirmButton={{ text: 'Çıkış Yap', onPress: onPressToLogout, buttonStyles: styles.modalExit, textStyles: styles.modalExitTxt }}
+        onConfirmButton={{ text: 'Çıkış Yap', onPress: onPressToLogout }}
       />
     </Layout>
   );

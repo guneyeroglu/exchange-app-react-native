@@ -1,4 +1,4 @@
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, View, RefreshControl } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { Layout } from '../../components/Layout';
@@ -14,6 +14,7 @@ import styles from './CalculationScreen.style';
 export const CalculationScreen = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [value, setValue] = useState('');
   const [buying, setBuying] = useState('');
   const [sales, setSales] = useState('');
@@ -33,16 +34,22 @@ export const CalculationScreen = () => {
       );
     }
     setIsLoading(false);
+    setRefreshing(false);
   };
 
   useEffect(() => {
     getAllData();
   }, []);
 
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await getAllData();
+  };
+
   return (
     <>
       <Layout style={styles.container}>
-        {!isLoading && (
+        {(!isLoading || refreshing) && (
           <>
             <View style={styles.localContainer}>
               <View style={styles.localIcon}>
@@ -84,10 +91,11 @@ export const CalculationScreen = () => {
                 </View>
               )}
               keyExtractor={(item) => item.symbol}
+              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             />
           </>
         )}
-        {isLoading && <Loading />}
+        {isLoading && !refreshing && <Loading />}
       </Layout>
     </>
   );
