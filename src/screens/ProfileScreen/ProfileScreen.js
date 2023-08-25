@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useToast } from 'react-native-toast-notifications';
@@ -155,7 +155,7 @@ export const ProfileScreen = ({ route }) => {
           </View>
         )}
       </View>
-      <KeyboardAvoidingView style={styles.keyboard} behavior='padding'>
+      <KeyboardAvoidingView style={styles.keyboard} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             <View style={styles.image}>

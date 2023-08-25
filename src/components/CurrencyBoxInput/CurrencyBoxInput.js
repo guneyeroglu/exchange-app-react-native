@@ -108,6 +108,7 @@ export const CurrencyBoxInput = ({
         onChangeText={convertMoney}
         onKeyPress={(e) => onKeyPressToMaxLength(e.nativeEvent.key)}
         maxLength={currentValue.includes('.') ? 9 : 5}
+        keyboardType='numeric'
       />
     </TouchableOpacity>
   );

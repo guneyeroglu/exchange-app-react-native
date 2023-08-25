@@ -1,4 +1,4 @@
-import { FlatList, Text, View, RefreshControl } from 'react-native';
+import { FlatList, Text, View, RefreshControl, KeyboardAvoidingView, Platform } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { Layout } from '../../components/Layout';
@@ -74,25 +74,27 @@ export const CalculationScreen = () => {
                 </View>
               </View>
             </View>
-            <FlatList
-              data={data}
-              renderItem={({ item }) => (
-                <View style={styles.currencyContainer}>
-                  <CurrencyBoxInput
-                    {...{ ...item, iconUri: item.icon }}
-                    key={item.symbol}
-                    value={value}
-                    setValue={setValue}
-                    setBuying={setBuying}
-                    setSales={setSales}
-                    isCurrentInput={isCurrentInput}
-                    setIsCurrenctInput={setIsCurrenctInput}
-                  />
-                </View>
-              )}
-              keyExtractor={(item) => item.symbol}
-              refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-            />
+            <KeyboardAvoidingView style={styles.keyboard} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+              <FlatList
+                data={data}
+                renderItem={({ item, index }) => (
+                  <View style={[styles.currencyContainer, index === data.length - 1 ? styles.lastItem : {}]}>
+                    <CurrencyBoxInput
+                      {...{ ...item, iconUri: item.icon }}
+                      key={item.symbol}
+                      value={value}
+                      setValue={setValue}
+                      setBuying={setBuying}
+                      setSales={setSales}
+                      isCurrentInput={isCurrentInput}
+                      setIsCurrenctInput={setIsCurrenctInput}
+                    />
+                  </View>
+                )}
+                keyExtractor={(item) => item.symbol}
+                refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+              />
+            </KeyboardAvoidingView>
           </>
         )}
         {isLoading && !refreshing && <Loading />}
