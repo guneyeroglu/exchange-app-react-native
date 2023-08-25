@@ -8,8 +8,7 @@ export default StyleSheet.create({
     paddingHorizontal: 0,
   },
   header: {
-    marginHorizontal: 16,
-    marginBottom: 16,
+    margin: 16,
   },
   editContainer: {
     alignItems: 'flex-end',

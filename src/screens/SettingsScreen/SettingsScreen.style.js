@@ -8,6 +8,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+    marginTop: 16,
   },
   listContainer: {
     flex: 1,
