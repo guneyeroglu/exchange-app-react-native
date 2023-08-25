@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useToast } from 'react-native-toast-notifications';
@@ -27,12 +27,9 @@ import {
   CalendarIcon,
 } from '../../global/constants/icons';
 
-import { useKeyboard } from '../../global/utils';
-
 import { ExchangeContext } from '../../store';
 
 import styles from './ProfileScreen.style';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export const ProfileScreen = ({ route }) => {
   const { user, logout, updateUserInformation } = useContext(ExchangeContext);
@@ -43,8 +40,6 @@ export const ProfileScreen = ({ route }) => {
   const [logoutModal, setLogoutModal] = useState(false);
   const toast = useToast();
   const isFocus = useIsFocused();
-  const marginBottom = useKeyboard();
-  const insets = useSafeAreaInsets();
 
   const id = user && user.id ? user.id : '';
   const username = user && user.username ? user.username : '';
@@ -160,129 +155,131 @@ export const ProfileScreen = ({ route }) => {
           </View>
         )}
       </View>
-      <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <View style={styles.image}>
-            <Text style={styles.imageTxt}>{usernameAbbreviation}</Text>
+      <KeyboardAvoidingView style={styles.keyboard} behavior='padding'>
+        <View style={styles.container}>
+          <View style={styles.imageContainer}>
+            <View style={styles.image}>
+              <Text style={styles.imageTxt}>{usernameAbbreviation}</Text>
+            </View>
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>{username}</Text>
+              <Text style={styles.subtitle}>{createdAt}</Text>
+            </View>
           </View>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>{username}</Text>
-            <Text style={styles.subtitle}>{createdAt}</Text>
-          </View>
-        </View>
-        <ScrollView style={{ flex: 1, marginBottom: marginBottom ? marginBottom - insets.bottom - 40 - 100 + 16 : 0 }}>
-          <View style={[styles.inputContainer]}>
-            <CustomTextInput
-              key={username}
-              name='username'
-              autoCapitalize='none'
-              placeholder='kullanıcı adı'
-              placeholderTextColor={formik.touched.username && formik.errors.username ? colors.error_75 : colors.black_75}
-              leftIcon={<UserIcon size={20} color={formik.touched.username && formik.errors.username && colors.error} />}
-              value={formik.values.username}
-              onChangeText={(e) => handleValueChange('username', e)}
-              editable={editable}
-              error={formik.touched.username && formik.errors.username}
-            />
-            <CustomTextInput
-              name='email'
-              autoCapitalize='none'
-              leftIcon={<MailIcon size={20} />}
-              value={email}
-              editable={false}
-              info={editable ? 'Mail adresi değiştirilemez.' : null}
-            />
-            {!datePickerVisibility && (
+          <ScrollView>
+            <View style={styles.inputContainer}>
               <CustomTextInput
-                name='birthday'
+                key={username}
+                name='username'
                 autoCapitalize='none'
-                placeholder='doğum günü'
-                placeholderTextColor={formik.touched.birthday && formik.errors.birthday ? colors.error_75 : colors.black_75}
-                leftIcon={<BirthdayIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />}
-                rightIcon={
-                  editable ? (
-                    <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
-                      <CalendarIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />
-                    </TouchableOpacity>
-                  ) : null
-                }
-                value={moment(formik.values.birthday).format('DD.MM.YYYY')}
-                onChangeText={(e) => handleValueChange('birthday', e)}
-                editable={false}
-                error={formik.touched.birthday && formik.errors.birthday}
+                placeholder='kullanıcı adı'
+                placeholderTextColor={formik.touched.username && formik.errors.username ? colors.error_75 : colors.black_75}
+                leftIcon={<UserIcon size={20} color={formik.touched.username && formik.errors.username && colors.error} />}
+                value={formik.values.username}
+                onChangeText={(e) => handleValueChange('username', e)}
+                editable={editable}
+                error={formik.touched.username && formik.errors.username}
               />
-            )}
-            {!editable ? (
               <CustomTextInput
-                name='gender'
+                name='email'
                 autoCapitalize='none'
-                placeholder='cinsiyet'
-                placeholderTextColor={formik.touched.gender && formik.errors.gender ? colors.error_75 : colors.black_75}
-                leftIcon={<GenderIcon size={20} />}
-                value={enumGender[formik.values.gender]}
+                leftIcon={<MailIcon size={20} />}
+                value={email}
                 editable={false}
+                info={editable ? 'Mail adresi değiştirilemez.' : null}
               />
-            ) : (
-              <View style={styles.genderContainer}>
-                <TouchableOpacity
-                  style={[styles.genderButton, formik.values.gender === '1' ? styles.genderButtonActive : {}]}
-                  onPress={() => handleValueChange('gender', '1')}
-                >
-                  <Text style={styles.genderTxt}>Erkek</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[styles.genderButton, formik.values.gender === '2' ? styles.genderButtonActive : {}]}
-                  onPress={() => handleValueChange('gender', '2')}
-                >
-                  <Text style={styles.genderTxt}>Kadın</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[styles.genderButton, formik.values.gender === '3' ? styles.genderButtonActive : {}]}
-                  onPress={() => handleValueChange('gender', '3')}
-                >
-                  <Text style={styles.genderTxt}>Belirtmek İstemiyorum</Text>
-                </TouchableOpacity>
-              </View>
-            )}
-            <CustomTextInputMask
-              mask={'0999 999 9999'}
-              name='phone'
-              autoCapitalize='none'
-              placeholder='telefon numarası'
-              placeholderTextColor={formik.touched.phone && formik.errors.phone ? colors.error_75 : colors.black_75}
-              leftIcon={<PhoneIcon size={20} />}
-              value={formik.values.phone}
-              onChangeText={(e) => handleValueChange('phone', e)}
-              editable={editable}
-              inputMode='numeric'
-              keyboardType='numeric'
-            />
-            <CustomTextInput
-              name='university'
-              autoCapitalize='none'
-              placeholder='üniversite'
-              placeholderTextColor={formik.touched.university && formik.errors.university ? colors.error_75 : colors.black_75}
-              leftIcon={<UniversityIcon size={20} />}
-              value={formik.values.university}
-              onChangeText={(e) => handleValueChange('university', e)}
-              editable={editable}
-            />
-            <CustomTextInput
-              name='city'
-              autoCapitalize='none'
-              leftIcon={<CityIcon size={20} />}
-              value={formik.values.city}
-              onChangeText={(e) => handleValueChange('city', e)}
-              editable={editable}
-            />
-          </View>
-        </ScrollView>
-        <View style={styles.footer}>
-          <TouchableOpacity style={styles.exit} onPress={() => setLogoutModal(true)}>
-            <LogoutIcon size={24} color={colors.error} />
-            <Text style={styles.exitTxt}>Çıkış</Text>
-          </TouchableOpacity>
+              {!datePickerVisibility && (
+                <CustomTextInput
+                  name='birthday'
+                  autoCapitalize='none'
+                  placeholder='doğum günü'
+                  placeholderTextColor={formik.touched.birthday && formik.errors.birthday ? colors.error_75 : colors.black_75}
+                  leftIcon={<BirthdayIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />}
+                  rightIcon={
+                    editable ? (
+                      <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
+                        <CalendarIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />
+                      </TouchableOpacity>
+                    ) : null
+                  }
+                  value={moment(formik.values.birthday).format('DD.MM.YYYY')}
+                  onChangeText={(e) => handleValueChange('birthday', e)}
+                  editable={false}
+                  error={formik.touched.birthday && formik.errors.birthday}
+                />
+              )}
+              {!editable ? (
+                <CustomTextInput
+                  name='gender'
+                  autoCapitalize='none'
+                  placeholder='cinsiyet'
+                  placeholderTextColor={formik.touched.gender && formik.errors.gender ? colors.error_75 : colors.black_75}
+                  leftIcon={<GenderIcon size={20} />}
+                  value={enumGender[formik.values.gender]}
+                  editable={false}
+                />
+              ) : (
+                <View style={styles.genderContainer}>
+                  <TouchableOpacity
+                    style={[styles.genderButton, formik.values.gender === '1' ? styles.genderButtonActive : {}]}
+                    onPress={() => handleValueChange('gender', '1')}
+                  >
+                    <Text style={styles.genderTxt}>Erkek</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[styles.genderButton, formik.values.gender === '2' ? styles.genderButtonActive : {}]}
+                    onPress={() => handleValueChange('gender', '2')}
+                  >
+                    <Text style={styles.genderTxt}>Kadın</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[styles.genderButton, formik.values.gender === '3' ? styles.genderButtonActive : {}]}
+                    onPress={() => handleValueChange('gender', '3')}
+                  >
+                    <Text style={styles.genderTxt}>Belirtmek İstemiyorum</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+              <CustomTextInputMask
+                mask={'0999 999 9999'}
+                name='phone'
+                autoCapitalize='none'
+                placeholder='telefon numarası'
+                placeholderTextColor={formik.touched.phone && formik.errors.phone ? colors.error_75 : colors.black_75}
+                leftIcon={<PhoneIcon size={20} />}
+                value={formik.values.phone}
+                onChangeText={(e) => handleValueChange('phone', e)}
+                editable={editable}
+                inputMode='numeric'
+                keyboardType='numeric'
+              />
+              <CustomTextInput
+                name='university'
+                autoCapitalize='none'
+                placeholder='üniversite'
+                placeholderTextColor={formik.touched.university && formik.errors.university ? colors.error_75 : colors.black_75}
+                leftIcon={<UniversityIcon size={20} />}
+                value={formik.values.university}
+                onChangeText={(e) => handleValueChange('university', e)}
+                editable={editable}
+              />
+              <CustomTextInput
+                name='city'
+                autoCapitalize='none'
+                leftIcon={<CityIcon size={20} />}
+                value={formik.values.city}
+                onChangeText={(e) => handleValueChange('city', e)}
+                editable={editable}
+              />
+            </View>
+          </ScrollView>
         </View>
+      </KeyboardAvoidingView>
+      <View style={styles.footer}>
+        <TouchableOpacity style={styles.exit} onPress={() => setLogoutModal(true)}>
+          <LogoutIcon size={24} color={colors.error} />
+          <Text style={styles.exitTxt}>Çıkış</Text>
+        </TouchableOpacity>
       </View>
       {editable && datePickerVisibility && (
         <CustomDatePicker

@@ -48,8 +48,12 @@ export default StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: 'normal',
   },
+  keyboard: {
+    flex: 1,
+  },
   container: {
     flex: 1,
+    marginBottom: 16,
   },
   imageContainer: {
     borderBottomWidth: 1,
@@ -114,7 +118,6 @@ export default StyleSheet.create({
     backgroundColor: colors.error_10,
     borderRadius: 8,
     padding: 8,
-    marginTop: 16,
     marginHorizontal: 16,
   },
   exitTxt: {
