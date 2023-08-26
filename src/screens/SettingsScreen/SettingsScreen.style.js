@@ -16,6 +16,9 @@ export default StyleSheet.create({
   list: {
     marginBottom: 48,
   },
+  listReset: {
+    marginBottom: 0,
+  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'center',

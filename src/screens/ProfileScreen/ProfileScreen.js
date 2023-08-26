@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useToast } from 'react-native-toast-notifications';
@@ -10,6 +10,7 @@ import { Layout } from '../../components/Layout';
 import { CustomTextInput, CustomTextInputMask } from '../../components/CustomTextInput';
 import { CustomDatePicker } from '../../components/CustomDatePicker';
 import { CustomModal } from '../../components/CustomModal';
+import { CustomKeyboardAvoidingView } from '../../components/CustomKeyboardAvoidingView';
 
 import { colors } from '../../global/constants/variables/colors';
 import {
@@ -155,7 +156,7 @@ export const ProfileScreen = ({ route }) => {
           </View>
         )}
       </View>
-      <KeyboardAvoidingView style={styles.keyboard} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <CustomKeyboardAvoidingView>
         <View style={styles.container}>
           <View style={styles.imageContainer}>
             <View style={styles.image}>
@@ -274,7 +275,7 @@ export const ProfileScreen = ({ route }) => {
             </View>
           </ScrollView>
         </View>
-      </KeyboardAvoidingView>
+      </CustomKeyboardAvoidingView>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.exit} onPress={() => setLogoutModal(true)}>
           <LogoutIcon size={24} color={colors.error} />
@@ -284,7 +285,7 @@ export const ProfileScreen = ({ route }) => {
       {editable && datePickerVisibility && (
         <CustomDatePicker
           value={new Date(birthday)}
-          display='spinner'
+          datePickerVisibility={datePickerVisibility}
           onPressToCancel={() => setDatePickerVisibility(false)}
           onPressToSubmit={onChangeDatePicker}
         />

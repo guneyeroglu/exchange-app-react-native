@@ -17,7 +17,7 @@ export default StyleSheet.create({
     resizeMode: 'contain',
   },
   content: {
-    padding: 16,
+    margin: 16,
   },
   title: {
     color: colors.black,

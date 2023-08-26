@@ -73,8 +73,8 @@ export const SettingsScreen = () => {
     <Layout style={styles.layout}>
       <View style={styles.container}>
         <ScrollView style={styles.listContainer}>
-          {list.map((listItem) => (
-            <View key={listItem.title} style={styles.list}>
+          {list.map((listItem, index) => (
+            <View key={listItem.title} style={[styles.list, index === list.length - 1 ? styles.listReset : {}]}>
               <List title={listItem.title} contents={listItem.contents} />
             </View>
           ))}

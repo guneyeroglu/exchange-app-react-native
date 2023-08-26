@@ -70,9 +70,6 @@ export default StyleSheet.create({
     fontStyle: 'italic',
     color: colors.black,
   },
-  keyboard: {
-    flex: 1,
-  },
   lastItem: {
     paddingBottom: 16,
   },

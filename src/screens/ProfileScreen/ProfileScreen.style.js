@@ -48,9 +48,6 @@ export default StyleSheet.create({
     fontStyle: 'normal',
     fontWeight: 'normal',
   },
-  keyboard: {
-    flex: 1,
-  },
   container: {
     flex: 1,
     marginBottom: 16,

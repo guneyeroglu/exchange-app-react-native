@@ -1,9 +1,10 @@
-import { FlatList, Text, View, RefreshControl, KeyboardAvoidingView, Platform } from 'react-native';
+import { FlatList, Text, View, RefreshControl } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { Layout } from '../../components/Layout';
 import { CurrencyBoxInput } from '../../components/CurrencyBoxInput';
 import { Loading } from '../../components/Loading';
+import { CustomKeyboardAvoidingView } from '../../components/CustomKeyboardAvoidingView';
 
 import { TurkeyIcon } from '../../global/constants/icons';
 import { getExchangeRate } from '../../global/services/';
@@ -74,7 +75,7 @@ export const CalculationScreen = () => {
                 </View>
               </View>
             </View>
-            <KeyboardAvoidingView style={styles.keyboard} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+            <CustomKeyboardAvoidingView>
               <FlatList
                 data={data}
                 renderItem={({ item, index }) => (
@@ -94,7 +95,7 @@ export const CalculationScreen = () => {
                 keyExtractor={(item) => item.symbol}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
               />
-            </KeyboardAvoidingView>
+            </CustomKeyboardAvoidingView>
           </>
         )}
         {isLoading && !refreshing && <Loading />}
