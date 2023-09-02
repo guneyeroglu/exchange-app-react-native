@@ -75,7 +75,7 @@ export const CalculationScreen = () => {
                 </View>
               </View>
             </View>
-            <CustomKeyboardAvoidingView>
+            <CustomKeyboardAvoidingView enabled={false}>
               <FlatList
                 data={data}
                 renderItem={({ item, index }) => (
