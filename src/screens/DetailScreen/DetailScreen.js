@@ -13,8 +13,8 @@ import { getExchangeRateDetail } from '../../global/services';
 import styles from './DetailScreen.style';
 
 export const DetailScreen = ({ route }) => {
-  const symbol = route.params.symbol;
-  const previousScreen = route.params.previousScreen;
+  const symbol = route.params?.symbol;
+  const previousScreen = route.params?.previousScreen;
 
   const navigation = useNavigation();
 

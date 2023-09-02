@@ -10,8 +10,8 @@ export default StyleSheet.create({
   },
   input: {
     width: '100%',
-    borderWidth: 1,
-    borderColor: 'transparent',
+    height: 36,
+    borderBottomWidth: 1,
     borderBottomColor: colors.black,
     paddingVertical: 8,
     paddingHorizontal: 8,

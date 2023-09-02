@@ -38,14 +38,14 @@ export const CalculationScreen = () => {
     setRefreshing(false);
   };
 
-  useEffect(() => {
-    getAllData();
-  }, []);
-
   const onRefresh = async () => {
     setRefreshing(true);
     await getAllData();
   };
+
+  useEffect(() => {
+    getAllData();
+  }, []);
 
   return (
     <>
