@@ -32,13 +32,3 @@ export const loginService = async (data) => {
     return { data: [], status: false, message: error };
   }
 };
-
-export const updateUserInformationService = async (data = {}, id) => {
-  try {
-    const response = await tokenApi.put(`${apiURL.withToken.userInformation}${id}`, data);
-
-    return { data: response.data, status: true };
-  } catch (error) {
-    return { data: [], status: false, message: error };
-  }
-};

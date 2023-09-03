@@ -3,7 +3,7 @@ import { apiURL } from '../constants/variables/urls';
 
 export const getExchangeRate = async () => {
   try {
-    const response = await tokenApi(apiURL.withToken.exchange);
+    const response = await tokenApi.get(apiURL.withToken.exchange);
 
     return { data: response.data, status: true };
   } catch (error) {
@@ -14,7 +14,7 @@ export const getExchangeRate = async () => {
 
 export const getExchangeRateDetail = async (id) => {
   try {
-    const response = await tokenApi(`${apiURL.withToken.exchangeDetail}${id}`);
+    const response = await tokenApi.get(`${apiURL.withToken.exchangeDetail}${id}`);
 
     return { data: response.data, status: true };
   } catch (error) {
