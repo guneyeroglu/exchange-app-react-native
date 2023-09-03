@@ -2,6 +2,8 @@ import { Platform, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
+import { colors } from '../../global/constants/variables/colors';
+
 import styles from './CustomDatePicker.style';
 
 export const CustomDatePicker = ({ value = new Date(), onPressToCancel = () => null, onPressToSubmit = () => null, datePickerVisibility = false }) => {
@@ -37,7 +39,16 @@ export const CustomDatePicker = ({ value = new Date(), onPressToCancel = () => n
           </View>
         </View>
       ) : (
-        show && <DateTimePicker display='default' value={date} mode='date' onChange={handleAndroidChange} />
+        show && (
+          <DateTimePicker
+            display='default'
+            value={date}
+            mode='date'
+            onChange={handleAndroidChange}
+            positiveButton={{ label: 'Onayla', textColor: colors.black }}
+            negativeButton={{ label: 'İptal', textColor: colors.black }}
+          />
+        )
       )}
     </>
   );
