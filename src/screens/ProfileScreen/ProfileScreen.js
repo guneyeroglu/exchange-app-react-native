@@ -189,26 +189,24 @@ export const ProfileScreen = ({ route }) => {
                 editable={false}
                 info={editable ? 'Mail adresi değiştirilemez.' : null}
               />
-              {!datePickerVisibility && (
-                <CustomTextInput
-                  name='birthday'
-                  autoCapitalize='none'
-                  placeholder='doğum günü'
-                  placeholderTextColor={formik.touched.birthday && formik.errors.birthday ? colors.error_75 : colors.black_75}
-                  leftIcon={<BirthdayIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />}
-                  rightIcon={
-                    editable ? (
-                      <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
-                        <CalendarIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />
-                      </TouchableOpacity>
-                    ) : null
-                  }
-                  value={moment(formik.values.birthday).format('DD.MM.YYYY')}
-                  onChangeText={(e) => handleValueChange('birthday', e)}
-                  editable={false}
-                  error={formik.touched.birthday && formik.errors.birthday}
-                />
-              )}
+              <CustomTextInput
+                name='birthday'
+                autoCapitalize='none'
+                placeholder='doğum günü'
+                placeholderTextColor={formik.touched.birthday && formik.errors.birthday ? colors.error_75 : colors.black_75}
+                leftIcon={<BirthdayIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />}
+                rightIcon={
+                  editable ? (
+                    <TouchableOpacity onPress={() => setDatePickerVisibility(true)}>
+                      <CalendarIcon size={20} color={formik.touched.birthday && formik.errors.birthday && colors.error} />
+                    </TouchableOpacity>
+                  ) : null
+                }
+                value={moment(formik.values.birthday).format('DD.MM.YYYY')}
+                onChangeText={(e) => handleValueChange('birthday', e)}
+                editable={false}
+                error={formik.touched.birthday && formik.errors.birthday}
+              />
               {!editable ? (
                 <CustomTextInput
                   name='gender'
@@ -284,7 +282,7 @@ export const ProfileScreen = ({ route }) => {
       </View>
       {editable && datePickerVisibility && (
         <CustomDatePicker
-          value={new Date(birthday)}
+          value={new Date(formik.values.birthday)}
           datePickerVisibility={datePickerVisibility}
           onPressToCancel={() => setDatePickerVisibility(false)}
           onPressToSubmit={onChangeDatePicker}
