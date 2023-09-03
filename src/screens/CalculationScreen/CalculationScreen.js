@@ -1,4 +1,4 @@
-import { FlatList, Text, View, RefreshControl } from 'react-native';
+import { FlatList, Text, View, RefreshControl, Platform } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { Layout } from '../../components/Layout';
@@ -75,7 +75,7 @@ export const CalculationScreen = () => {
                 </View>
               </View>
             </View>
-            <CustomKeyboardAvoidingView enabled={false}>
+            <CustomKeyboardAvoidingView enabled={Platform.OS === 'ios'}>
               <FlatList
                 data={data}
                 renderItem={({ item, index }) => (
